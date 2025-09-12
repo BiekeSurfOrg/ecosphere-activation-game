@@ -309,6 +309,7 @@ const App = () => {
   
   const [searchParams] = useSearchParams();
   const locationIdFromUrl = searchParams.get('locationId');
+  const initialLoadRef = useRef(false);
 
 const loadUserProgress = useCallback(async () => {
     try {
@@ -417,14 +418,18 @@ const handleQRConfirm = async () => {
   };
   
 useEffect(() => {
-    loadUserProgress();
-    if (locationIdFromUrl) {
-        const qrData = demoQRData[locationIdFromUrl];
-        if (qrData) {
-            handleQRScan(qrData);
-        }
+    if (!initialLoadRef.current) {
+      loadUserProgress();
+      initialLoadRef.current = true;
     }
-}, [loadUserProgress, locationIdFromUrl, demoQRData, handleQRScan]);
+    
+    if (locationIdFromUrl) {
+      const qrData = demoQRData[locationIdFromUrl];
+      if (qrData) {
+        handleQRScan(qrData);
+      }
+    }
+  }, [loadUserProgress, locationIdFromUrl, demoQRData, handleQRScan]);
 
   if (loading) {
     return (
