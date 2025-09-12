@@ -6,8 +6,10 @@ import { v4 as uuidv4 } from 'uuid';
 // Utils
 const getUserUUID = () => {
   let uuid = localStorage.getItem('user_uuid');
-  if (!uuid) {
-    uuid = uuidv4(); // Генерира валиден UUID
+  if (!uuid || !uuidValidate(uuid)) {
+    // If it's not valid, remove it and generate a new one
+    localStorage.removeItem('user_uuid');
+    uuid = uuidv4();
     localStorage.setItem('user_uuid', uuid);
   }
   return uuid;
