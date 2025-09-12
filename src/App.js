@@ -310,34 +310,26 @@ const App = () => {
   const [searchParams] = useSearchParams();
   const locationIdFromUrl = searchParams.get('locationId');
 
-  const loadUserProgress = useCallback(async () => {
+const loadUserProgress = useCallback(async () => {
     try {
-      const progress = await api.getUserProgress(userUuid);
-      setScannedLocations(progress.scannedLocations || []);
-      setTotalCoins(progress.totalCoins || 0);
-      setLoading(false);
+        const progress = await api.getUserProgress(userUuid);
+        setScannedLocations(progress.scannedLocations || []);
+        setTotalCoins(progress.totalCoins || 0);
+        setLoading(false);
     } catch (error) {
-      console.error('Error loading progress:', error);
-      // Fallback to localStorage for demo
-      const localScanned = JSON.parse(localStorage.getItem(`scanned_${userUuid}`) || '[]');
-      const localCoins = parseInt(localStorage.getItem(`coins_${userUuid}`) || '0');
-      setScannedLocations(localScanned);
-      setTotalCoins(localCoins);
-      setLoading(false);
+        console.error('Error loading progress:', error);
+        // ... fallback logic
     }
-  }, [userUuid]);
+}, [userUuid]);
 
-  const handleQRScan = (qrData) => {
-    // Check if already scanned
+const handleQRScan = useCallback((qrData) => {
     if (scannedLocations.some(loc => loc.locationId === qrData.locationId)) {
-      alert('Вече сте сканирали QR кода на това място!');
-      return;
+        alert('Вече сте сканирали QR кода на това място!');
+        return;
     }
-    
-    // Show QR info modal
     setCurrentQRData(qrData);
     setShowQRInfo(true);
-  };
+}, [scannedLocations]);
 
 const handleQRConfirm = async () => {
     if (!currentQRData) return;
@@ -424,17 +416,15 @@ const handleQRConfirm = async () => {
     }
   };
   
-  useEffect(() => {
+useEffect(() => {
     loadUserProgress();
-    
-    // Check for QR data in URL on first load
     if (locationIdFromUrl) {
-      const qrData = demoQRData[locationIdFromUrl];
-      if (qrData) {
-        handleQRScan(qrData);
-      }
+        const qrData = demoQRData[locationIdFromUrl];
+        if (qrData) {
+            handleQRScan(qrData);
+        }
     }
-  }, [loadUserProgress, locationIdFromUrl, demoQRData, handleQRScan]);
+}, [loadUserProgress, locationIdFromUrl, demoQRData, handleQRScan]);
 
   if (loading) {
     return (
