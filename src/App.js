@@ -264,10 +264,11 @@ const App = () => {
           setShowRewardModal(true);
         } else {
           const count = result.scannedLocations.length;
-          const countTextMap = { 1: 'първия', 2: 'втория', 3: 'третия' };
-          const message = `Успешно сканира ${countTextMap[count] || count + '-тия'} QR код.`;
-          
-          const additionalInfo = `Това е допълнителна информация за ${qrData.company}, показана след успешно сканиране. Бонус: +${qrData.bonus} кредита.`;
+          const countTextMap = { 1: 'eerste', 2: 'tweede', 3: 'derde' };
+          const message = `Je hebt met succes de ${countTextMap[count] || count + 'e'} QR-code gescand.`;
+                
+          const additionalInfo = `Dit is extra informatie over ${qrData.company}, weergegeven na een succesvolle scan.`;
+
           setScanResultView({ success: true, message, additionalInfo });
         }
       } else {
