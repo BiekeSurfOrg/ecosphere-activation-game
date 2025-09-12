@@ -6,10 +6,9 @@ import { v4 as uuidv4, validate as uuidValidate } from 'uuid';
 // Utils
 const getUserUUID = () => {
   let uuid = localStorage.getItem('user_uuid');
-  if (!uuid || !uuidValidate(uuid)) {
-    // If it's not valid, remove it and generate a new one
-    localStorage.removeItem('user_uuid');
-    uuid = uuidv4();
+  if (!uuid) {
+    // Generate a simple string instead of a valid UUID
+    uuid = 'user-' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     localStorage.setItem('user_uuid', uuid);
   }
   return uuid;
