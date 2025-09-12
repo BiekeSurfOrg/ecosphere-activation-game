@@ -252,31 +252,31 @@ const App = () => {
             return;
         }
 
-        try {
-            const result = await api.scanQR(userUuid, qrData);
+    try {
+      const result = await api.scanQR(userUuid, qrData);
 
-            if (result.success) {
-                setScannedLocations(result.scannedLocations);
-                setTotalCoins(result.totalCoins);
-
-                const count = result.scannedLocations.length;
-                const countTextMap = { 1: 'eerste', 2: 'tweede', 3: 'derde' };
-                const message = `Je hebt met succes de ${countTextMap[count] || count + 'e'} QR-code gescand.`;
-                
-                const additionalInfo = `Dit is extra informatie over ${qrData.company}, weergegeven na een succesvolle scan. Bonus: +${qrData.bonus} credits.`;
-
-                setScanResultView({ success: true, message, additionalInfo });
-                
-                if (result.isGameComplete) {
-                    setTimeout(() => setShowRewardModal(true), 1500);
-                }
-            } else {
-                 setScanResultView({ success: false, message: result.message || 'Er is een fout opgetreden.' });
-            }
-        } catch (error) {
-            setScanResultView({ success: false, message: 'Fout bij het verbinden met de server. Probeer het opnieuw.' });
+      if (result.success) {
+        setScannedLocations(result.scannedLocations);
+        setTotalCoins(result.totalCoins);
+        
+        // The backend determines if the game is complete
+        if (result.isGameComplete) {
+          setShowRewardModal(true);
+        } else {
+          const count = result.scannedLocations.length;
+          const countTextMap = { 1: 'първия', 2: 'втория', 3: 'третия' };
+          const message = `Успешно сканира ${countTextMap[count] || count + '-тия'} QR код.`;
+          
+          const additionalInfo = `Това е допълнителна информация за ${qrData.company}, показана след успешно сканиране. Бонус: +${qrData.bonus} кредита.`;
+          setScanResultView({ success: true, message, additionalInfo });
         }
-    }, [userUuid, scannedLocations]);
+      } else {
+        setScanResultView({ success: false, message: result.message || 'Възникна грешка.' });
+      }
+    } catch (error) {
+      setScanResultView({ success: false, message: 'Грешка при свързване със сървъра. Моля, опитайте отново.' });
+    }
+  }, [userUuid, scannedLocations]);
 
     const handleContinueToGame = () => {
         setSearchParams({}, { replace: true });
