@@ -60,7 +60,8 @@ const ScanResultPage = ({ result, onContinue }) => {
     const { success, message, additionalInfo } = result;
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center p-4">
+        // Използваме директно KBC синьо за фон, и бял текст
+        <div className="min-h-screen bg-[#0050A4] flex items-center justify-center p-4">
             <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full text-center">
                 {success ? (
                     <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
@@ -76,9 +77,10 @@ const ScanResultPage = ({ result, onContinue }) => {
                     </div>
                 )}
                 
+                {/* Бутонът също е в KBC синьо */}
                 <button
                     onClick={onContinue}
-                    className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors"
+                    className="mt-4 w-full bg-[#0050A4] hover:bg-[#003A7A] text-white font-bold py-3 px-4 rounded-lg transition-colors"
                 >
                     Bekijk mijn voortgang
                 </button>
@@ -124,7 +126,7 @@ const ProgressTracker = ({ scannedLocations = [], totalCoins }) => {
             <div className="mt-4">
                 <div className="w-full bg-gray-200 rounded-full h-3">
                     <div
-                        className="bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full transition-all duration-500 ease-out"
+                        className="bg-gradient-to-r from-[#0050A4] to-[#003A7A] h-3 rounded-full transition-all duration-500 ease-out"
                         style={{ width: `${(scannedLocations.length / 3) * 100}%` }}
                     ></div>
                 </div>
@@ -155,7 +157,7 @@ const RewardModal = ({ isOpen, onClose, onChoose }) => {
                     </button>
                     <button
                         onClick={() => onChoose('wheel')}
-                        className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg inline-flex items-center justify-center space-x-2 transition-colors"
+                        className="w-full bg-[#0050A4] hover:bg-[#003A7A] text-white font-bold py-3 px-4 rounded-lg inline-flex items-center justify-center space-x-2 transition-colors"
                     >
                         <RotateCcw className="w-5 h-5" />
                         <span>Rad van Fortuin (5 spins)</span>
@@ -190,8 +192,8 @@ const WheelSpinner = ({ spins, onSpin }) => {
             <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">🎰 Rad van Fortuin</h2>
             <div className="text-center">
                 <div className="mb-4">
-                    <div className={`w-32 h-32 mx-auto border-8 border-purple-500 rounded-full flex items-center justify-center ${isSpinning ? 'animate-spin' : ''} bg-gradient-to-br from-purple-100 to-purple-200`}>
-                        <RotateCcw className={`w-16 h-16 text-purple-600 ${isSpinning ? 'animate-pulse' : ''}`} />
+                    <div className={`w-32 h-32 mx-auto border-8 border-[#0050A4] rounded-full flex items-center justify-center ${isSpinning ? 'animate-spin' : ''} bg-gradient-to-br from-[#E0F2F7] to-[#B2DAE8]`}>
+                        <RotateCcw className={`w-16 h-16 text-[#0050A4] ${isSpinning ? 'animate-pulse' : ''}`} />
                     </div>
                 </div>
                 <p className="text-lg font-semibold text-gray-700 mb-4">
@@ -207,7 +209,7 @@ const WheelSpinner = ({ spins, onSpin }) => {
                 <button
                     onClick={spin}
                     disabled={isSpinning || spins <= 0}
-                    className="bg-purple-600 hover:bg-purple-700 disabled:bg-gray-400 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                    className="bg-[#0050A4] hover:bg-[#003A7A] disabled:bg-gray-400 text-white font-bold py-3 px-6 rounded-lg transition-colors"
                 >
                     {isSpinning ? 'Draaien...' : '🎲 Draai aan het rad'}
                 </button>
@@ -252,32 +254,31 @@ const App = () => {
             return;
         }
 
-    try {
-      const result = await api.scanQR(userUuid, qrData);
+        try {
+            const result = await api.scanQR(userUuid, qrData);
 
-      if (result.success) {
-        setScannedLocations(result.scannedLocations);
-        setTotalCoins(result.totalCoins);
-        
-        // The backend determines if the game is complete
-        if (result.isGameComplete) {
-          setShowRewardModal(true);
-        } else {
-          const count = result.scannedLocations.length;
-          const countTextMap = { 1: 'eerste', 2: 'tweede', 3: 'derde' };
-          const message = `Je hebt met succes de ${countTextMap[count] || count + 'e'} QR-code gescand.`;
+            if (result.success) {
+                setScannedLocations(result.scannedLocations);
+                setTotalCoins(result.totalCoins);
+
+                const count = result.scannedLocations.length;
+                const countTextMap = { 1: 'eerste', 2: 'tweede', 3: 'derde' };
+                const message = `Je hebt met succes de ${countTextMap[count] || count + 'e'} QR-code gescand.`;
                 
-          const additionalInfo = `Dit is extra informatie over ${qrData.company}, weergegeven na een succesvolle scan.`;
+                const additionalInfo = `Dit is extra informatie over ${qrData.company}, gelegen op ${qrData.address}, weergegeven na een succesvolle scan. Bezoek onze website: ${qrData.website}`;
 
-          setScanResultView({ success: true, message, additionalInfo });
+                setScanResultView({ success: true, message, additionalInfo });
+                
+                if (result.isGameComplete) {
+                    setTimeout(() => setShowRewardModal(true), 1500);
+                }
+            } else {
+                 setScanResultView({ success: false, message: result.message || 'Er is een fout opgetreden.' });
+            }
+        } catch (error) {
+            setScanResultView({ success: false, message: 'Fout bij het verbinden met de server. Probeer het opnieuw.' });
         }
-      } else {
-        setScanResultView({ success: false, message: result.message || 'Възникна грешка.' });
-      }
-    } catch (error) {
-      setScanResultView({ success: false, message: 'Грешка при свързване със сървъра. Моля, опитайте отново.' });
-    }
-  }, [userUuid, scannedLocations]);
+    }, [userUuid, scannedLocations]);
 
     const handleContinueToGame = () => {
         setSearchParams({}, { replace: true });
@@ -308,9 +309,9 @@ const App = () => {
     };
 
     const demoQRData = {
-        1: { locationId: 1, company: "Tech Solutions Ltd", address: "Vitosha Boulevard 123, Sofia", description: "Leading IT company.", website: "https://techsolutions.bg", bonus: 10 },
-        2: { locationId: 2, company: "Green Energy Co", address: "Rakovski Street 45, Plovdiv", description: "Innovative solutions.", website: "https://greenenergy.bg", bonus: 15 },
-        3: { locationId: 3, company: "Digital Marketing Hub", address: "Independence Square 1, Varna", description: "Creative campaigns.", website: "https://digitalmarketing.bg", bonus: 20 }
+        1: { locationId: 1, company: "Tech Solutions Ltd", address: "Vitosha Boulevard 123, Sofia", description: "Leading IT company in Bulgaria, specializing in web development and digital marketing.", website: "https://techsolutions.bg", bonus: 10 },
+        2: { locationId: 2, company: "Green Energy Co", address: "Rakovski Street 45, Plovdiv", description: "Innovative solutions for renewable energy and sustainable development.", website: "https://greenenergy.bg", bonus: 15 },
+        3: { locationId: 3, company: "Digital Marketing Hub", address: "Independence Square 1, Varna", description: "Creative digital campaigns and growth strategies for your business.", website: "https://digitalmarketing.bg", bonus: 20 }
     };
 
     useEffect(() => {
@@ -329,10 +330,10 @@ const App = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
+            <div className="min-h-screen bg-[#0050A4] flex items-center justify-center">
                 <div className="text-center">
-                    <RotateCcw className="w-8 h-8 animate-spin text-blue-600 mx-auto mb-2" />
-                    <p className="text-gray-600">Laden...</p>
+                    <RotateCcw className="w-8 h-8 animate-spin text-white mx-auto mb-2" />
+                    <p className="text-white">Laden...</p>
                 </div>
             </div>
         );
@@ -343,9 +344,11 @@ const App = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-8 px-4">
+        // Основен фон на приложението в KBC синьо
+        <div className="min-h-screen bg-[#0050A4] py-8 px-4">
             <div className="max-w-md mx-auto">
-                <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
+                {/* Заглавие в бял цвят */}
+                <h1 className="text-3xl font-bold text-center text-white mb-8">
                     🎯 QR Avontuur
                 </h1>
                 <ProgressTracker
@@ -368,8 +371,9 @@ const App = () => {
                     onClose={() => setShowRewardModal(false)}
                     onChoose={handleRewardChoice}
                 />
-                <div className="mt-8 p-4 bg-white bg-opacity-50 rounded-lg text-sm">
-                    <p className="font-mono text-center text-gray-600">
+                {/* Информация за потребителя в KBC синьо, но с бял текст */}
+                <div className="mt-8 p-4 bg-[#003A7A] bg-opacity-70 rounded-lg text-sm">
+                    <p className="font-mono text-center text-white">
                         UUID: {userUuid.substring(0, 12)}...
                     </p>
                 </div>
