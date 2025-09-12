@@ -376,6 +376,7 @@ const App = () => {
                     <p className="font-mono text-center text-white">
                         UUID: {userUuid.substring(0, 12)}...
                     </p>
+                    
                 </div>
             </div>
         </div>
