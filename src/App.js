@@ -6,7 +6,7 @@ import { BrowserRouter as Router, useSearchParams } from 'react-router-dom';
 const getUserUUID = () => {
   let uuid = localStorage.getItem('user_uuid');
   if (!uuid) {
-    uuid = 'user-' + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
+    uuid = uuidv4(); // Генерира валиден UUID
     localStorage.setItem('user_uuid', uuid);
   }
   return uuid;
@@ -26,8 +26,7 @@ const api = {
         },
         body: JSON.stringify({
           userUuid,
-          qrData,
-          timestamp: new Date().toISOString()
+          qrData
         }),
       });
       return await response.json();
@@ -338,35 +337,24 @@ const App = () => {
     setShowQRInfo(true);
   };
 
-  const handleQRConfirm = async () => {
+const handleQRConfirm = async () => {
     if (!currentQRData) return;
 
     try {
+      // Изпращаме заявка към бекенда с данните от QR кода
       const result = await api.scanQR(userUuid, currentQRData);
-      
+
       if (result.success) {
-        const newLocation = {
-          locationId: currentQRData.locationId,
-          company: currentQRData.company,
-          scannedAt: new Date().toISOString(),
-          bonus: currentQRData.bonus
-        };
-        
-        const newScannedLocations = [...scannedLocations, newLocation];
-        const newTotalCoins = totalCoins + currentQRData.bonus;
-        
-        setScannedLocations(newScannedLocations);
-        setTotalCoins(newTotalCoins);
-        
-        // Save to localStorage as backup
-        localStorage.setItem(`scanned_${userUuid}`, JSON.stringify(newScannedLocations));
-        localStorage.setItem(`coins_${userUuid}`, newTotalCoins.toString());
-        
+        // Обновяваме състоянието на играта с данните от бекенда
+        setScannedLocations(result.scannedLocations);
+        setTotalCoins(result.totalCoins);
+
         setShowQRInfo(false);
         setCurrentQRData(null);
-        
-        // Check if game completed
-        if (newScannedLocations.length === 3) {
+
+        // Проверяваме дали играта е завършена, базирано на флага от бекенда
+        if (result.isGameComplete) {
+          // Ако е завършена, показваме модалния прозорец за награда
           setTimeout(() => setShowRewardModal(true), 1000);
         }
       }
@@ -375,6 +363,7 @@ const App = () => {
       alert('Грешка при сканиране на QR кода! Опитайте отново.');
     }
   };
+
 
   const handleRewardChoice = async (choice) => {
     try {
