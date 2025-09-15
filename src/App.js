@@ -89,7 +89,7 @@ const ScanResultPage = ({ result, onContinue }) => {
 const ProgressTracker = ({ scannedLocations = [], totalCoins }) => {
     const locations = [1, 2, 3];
     return (
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+        <div className="rounded-lg p-6 mb-6">
             <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">Spelvoortgang</h2>
             <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg p-4 mb-6">
                 <div className="flex items-center justify-center space-x-3">
@@ -184,7 +184,7 @@ const WheelSpinner = ({ spins, onSpin }) => {
     if (spins <= 0) return null;
 
     return (
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+        <div className="rounded-lg p-6 mb-6">
             <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">🎰 Rad van Fortuin</h2>
             <div className="text-center">
                 <div className="mb-4">
@@ -352,7 +352,7 @@ const App = () => {
                     totalCoins={totalCoins}
                 />
                 {scannedLocations.length < 3 && (
-                    <div className="bg-white rounded-lg shadow-lg p-6 mb-6 text-center">
+                    <div className="rounded-lg p-6 mb-6 text-center text-white">
                         <p className="text-gray-600">
                             Scan de volgende QR-code met de camera van je telefoon om het avontuur voort te zetten.
                         </p>
