@@ -339,43 +339,48 @@ const App = () => {
         return <ScanResultPage result={scanResultView} onContinue={handleContinueToGame} />;
     }
 
-    return (
-        // Основен фон на приложението в KBC синьо
-        <div className="min-h-screen bg-[#0050A4] py-8 px-4">
-            <div className="max-w-md mx-auto">
-                {/* Заглавие в бял цвят */}
-                <h1 className="text-3xl font-bold text-center text-white mb-8">
-                    🎯 QR Avontuur
-                </h1>
-                <ProgressTracker
-                    scannedLocations={scannedLocations}
-                    totalCoins={totalCoins}
-                />
-                {scannedLocations.length < 3 && (
-                    <div className="rounded-lg p-6 mb-6 text-center text-white">
-                        <p className="text-gray-600">
-                            Scan de volgende QR-code met de camera van je telefoon om het avontuur voort te zetten.
-                        </p>
-                    </div>
-                )}
-                <WheelSpinner
-                    spins={wheelSpins}
-                    onSpin={handleWheelSpin}
-                />
-                <RewardModal
-                    isOpen={showRewardModal}
-                    onClose={() => setShowRewardModal(false)}
-                    onChoose={handleRewardChoice}
-                />
-                {/* Информация за потребителя в KBC синьо, но с бял текст */}
-                <div className="mt-8 p-4 bg-[#003A7A] bg-opacity-70 rounded-lg text-sm">
-                    <p className="font-mono text-center text-white">
-                        UUID: {userUuid.substring(0, 12)}...
+return (
+    // Основен фон на приложението в KBC синьо
+    <div className="min-h-screen bg-[#0050A4] flex items-center justify-center px-4">
+        <div className="max-w-md mx-auto text-center">
+            {/* Заглавие в бял цвят */}
+            <h1 className="text-3xl font-bold text-white mb-8">
+                🎯 QR Avontuur
+            </h1>
+
+            <ProgressTracker
+                scannedLocations={scannedLocations}
+                totalCoins={totalCoins}
+            />
+
+            {scannedLocations.length < 3 && (
+                <div className="rounded-lg p-6 mb-6 text-center text-white">
+                    <p className="text-gray-200">
+                        Scan de volgende QR-code met de camera van je telefoon om het avontuur voort te zetten.
                     </p>
                 </div>
+            )}
+
+            <WheelSpinner
+                spins={wheelSpins}
+                onSpin={handleWheelSpin}
+            />
+
+            <RewardModal
+                isOpen={showRewardModal}
+                onClose={() => setShowRewardModal(false)}
+                onChoose={handleRewardChoice}
+            />
+
+            {/* Информация за потребителя в KBC синьо, но с бял текст */}
+            <div className="mt-8 p-4 bg-[#003A7A] bg-opacity-70 rounded-lg text-sm">
+                <p className="font-mono text-center text-white">
+                    UUID: {userUuid.substring(0, 12)}...
+                </p>
             </div>
         </div>
-    );
+    </div>
+);
 }
 
 // Wrap the App component with Router to enable useSearchParams
