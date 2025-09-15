@@ -57,32 +57,32 @@ const api = {
 
 // Component to display the scan result
 const ScanResultPage = ({ result, onContinue }) => {
-    const { success, message, additionalInfo } = result;
+    const { success, message, additionalInfo } = result;
 
-    return (
-        <div className="min-h-screen bg-[#0050A4] text-white flex flex-col items-center justify-center p-4 text-center">
-            {success ? (
-                <CheckCircle className="w-16 h-16 text-white mx-auto mb-4" />
-            ) : (
-                <X className="w-16 h-16 text-white mx-auto mb-4" />
-            )}
-            
-            <h2 className="text-2xl font-bold mb-3">{message}</h2>
-            
-            {additionalInfo && (
-                <div className="text-center bg-white bg-opacity-10 border border-white border-opacity-20 p-4 rounded-lg my-6 max-w-sm">
-                    <p>{additionalInfo}</p>
-                </div>
-            )}
-            
-            <button
-                onClick={onContinue}
-                className="mt-4 w-full max-w-xs bg-white text-[#0050A4] font-bold py-3 px-4 rounded-lg transition-colors hover:bg-gray-200"
-            >
-                Bekijk mijn voortgang
-            </button>
-        </div>
-    );
+    return (
+        <div className="min-h-screen bg-[#0050A4] text-white flex flex-col items-center justify-center p-4 text-center">
+            {success ? (
+                <CheckCircle className="w-16 h-16 text-white mx-auto mb-4" />
+            ) : (
+                <X className="w-16 h-16 text-white mx-auto mb-4" />
+            )}
+            
+            <h2 className="text-2xl font-bold mb-3">{message}</h2>
+            
+            {additionalInfo && (
+                <div className="text-center bg-white bg-opacity-10 border border-white border-opacity-20 p-4 rounded-lg my-6 max-w-sm">
+                    <p>{additionalInfo}</p>
+                </div>
+            )}
+            
+            <button
+                onClick={onContinue}
+                className="mt-4 w-full max-w-xs bg-white text-[#0050A4] font-bold py-3 px-4 rounded-lg transition-colors hover:bg-gray-200"
+            >
+                Bekijk mijn voortgang
+            </button>
+        </div>
+    );
 };
 
 // Progress Tracker Component
