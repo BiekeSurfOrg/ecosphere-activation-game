@@ -57,36 +57,32 @@ const api = {
 
 // Component to display the scan result
 const ScanResultPage = ({ result, onContinue }) => {
-    const { success, message, additionalInfo } = result;
+    const { success, message, additionalInfo } = result;
 
-    return (
-        // Използваме директно KBC синьо за фон, и бял текст
-        <div className="min-h-screen bg-[#0050A4] flex items-center justify-center p-4">
-            <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full text-center">
-                {success ? (
-                    <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                ) : (
-                    <X className="w-16 h-16 text-red-500 mx-auto mb-4" />
-                )}
-                
-                <h2 className="text-2xl font-bold text-gray-800 mb-3">{message}</h2>
-                
-                {additionalInfo && (
-                    <div className="text-left bg-gray-50 border border-gray-200 p-4 rounded-lg my-6">
-                        <p className="text-gray-700">{additionalInfo}</p>
-                    </div>
-                )}
-                
-                {/* Бутонът също е в KBC синьо */}
-                <button
-                    onClick={onContinue}
-                    className="mt-4 w-full bg-[#0050A4] hover:bg-[#003A7A] text-white font-bold py-3 px-4 rounded-lg transition-colors"
-                >
-                    Bekijk mijn voortgang
-                </button>
-            </div>
-        </div>
-    );
+    return (
+        <div className="min-h-screen bg-[#0050A4] text-white flex flex-col items-center justify-center p-4 text-center">
+            {success ? (
+                <CheckCircle className="w-16 h-16 text-white mx-auto mb-4" />
+            ) : (
+                <X className="w-16 h-16 text-white mx-auto mb-4" />
+            )}
+            
+            <h2 className="text-2xl font-bold mb-3">{message}</h2>
+            
+            {additionalInfo && (
+                <div className="text-center bg-white bg-opacity-10 border border-white border-opacity-20 p-4 rounded-lg my-6 max-w-sm">
+                    <p>{additionalInfo}</p>
+                </div>
+            )}
+            
+            <button
+                onClick={onContinue}
+                className="mt-4 w-full max-w-xs bg-white text-[#0050A4] font-bold py-3 px-4 rounded-lg transition-colors hover:bg-gray-200"
+            >
+                Bekijk mijn voortgang
+            </button>
+        </div>
+    );
 };
 
 // Progress Tracker Component
