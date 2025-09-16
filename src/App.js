@@ -99,12 +99,21 @@ const ScanResultPage = ({ result, onContinue }) => {
             <p>{additionalInfo}</p>
           </div>
         )}
-        <button
-          onClick={onContinue}
-          className="mt-4 w-full max-w-xs bg-white text-[#00BFFF] font-bold py-3 px-4 rounded-lg transition-colors hover:bg-gray-200"
-        >
-          Bekijk mijn voortgang
-        </button>
+        {isGameComplete ? (
+                    <button
+                        onClick={onContinue}
+                        className="mt-4 w-full max-w-xs bg-green-500 text-white font-bold py-3 px-4 rounded-lg transition-colors hover:bg-green-600"
+                    >
+                        Claim your prize!
+                    </button>
+                ) : (
+                    <button
+                        onClick={onContinue}
+                        className="mt-4 w-full max-w-xs bg-white text-[#00BFFF] font-bold py-3 px-4 rounded-lg transition-colors hover:bg-gray-200"
+                    >
+                        Bekijk mijn voortgang
+                    </button>
+                )}
       </div>
     </div>
   );
@@ -249,6 +258,9 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [scanResultView, setScanResultView] = useState(null);
   const [showCongratulations, setShowCongratulations] = useState(false);
+  const handleContinueToPrize = () => {
+    setShowCongratulations(true);
+};
 
   const [searchParams, setSearchParams] = useSearchParams();
   const locationIdFromUrl = searchParams.get('locationId');
@@ -368,9 +380,11 @@ const App = () => {
     return <CongratulationsPage onContinue={handleContinueFromCongratulations} />;
   }
 
-  if (scanResultView) {
-    return <ScanResultPage result={scanResultView} onContinue={handleContinueToGame} />;
-  }
+if (scanResultView) {
+    const isGameComplete = scannedLocations.length === 3;
+    const continueHandler = isGameComplete ? handleContinueToPrize : handleContinueToGame;
+    return <ScanResultPage result={scanResultView} onContinue={continueHandler} isGameComplete={isGameComplete} />;
+}
 
   return (
     <div className="min-h-screen relative flex items-center justify-center text-center">
