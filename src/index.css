@@ -1,15 +1,24 @@
 html, body, #root {
-  background-color: #00BFFF;
   height: 100%;
   margin: 0;
   padding: 0;
-
-  background-image: url('./assets/logo.png'); /* Коригирай пътя до логото */
-  background-repeat: no-repeat; /* Не повтаряй логото */
+  
+  /* Основен фон за цялата страница */
+  background-color: #00BFFF; /* Светлосиният фон */
+  
+  /* Добавяне на логото като фоново изображение */
+  background-image: url('./assets/logo.png'); /* КОРИГИРАЙ ПЪТЯ ДО ЛОГОТО */
+  background-repeat: no-repeat;
   background-position: center center; /* Центрирай логото */
-  background-size: 50%; /* Промени размера, ако е необходимо (напр. 'contain', 'cover', '100px auto') */
-  background-attachment: fixed; /* (По избор) Ако искаш логото да стои на място, когато скролваш */
+  background-size: cover; /* Разтегни логото да покрие целия екран */
+  background-attachment: fixed; /* (По избор) Ако искаш логото да стои на място при скролване */
 
+  /* Добавяне на филтър за по-добро съчетаване с текста */
+  /* Опция 1: Омекотяване чрез brightness (препоръчително за светли лога) */
+  filter: brightness(1.2); /* Прави го малко по-светло, за да изпъкне леко от синия фон */
+  
+  /* Опция 2: Затъмняване чрез opacity (ако логото е по-тъмно или искаш да го смесиш повече) */
+  /* filter: opacity(0.5); */ /* Прави логото 50% прозрачно */
 }
 
 body {

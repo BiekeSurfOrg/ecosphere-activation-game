@@ -405,11 +405,11 @@ const App = () => {
         // </div>
         
             <div className="min-h-screen bg-[#00BFFF] text-white flex items-center justify-center text-center">
-                          <img 
+                          {/* <img 
                 src={logo} 
                 alt="Your App Logo" 
                 className="absolute top-4 left-1/2 -translate-x-1/2 w-32 h-auto md:w-48 z-10" 
-            />
+            /> */}
         <p>
             Scan een QR-code om te beginnen.
         </p>
