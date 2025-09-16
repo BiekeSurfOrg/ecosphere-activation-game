@@ -259,8 +259,9 @@ const App = () => {
   const [scanResultView, setScanResultView] = useState(null);
   const [showCongratulations, setShowCongratulations] = useState(false);
   const handleContinueToPrize = () => {
-    setShowCongratulations(true);
-};
+        setScanResultView(null);
+        setShowCongratulations(true);
+    }
 
   const [searchParams, setSearchParams] = useSearchParams();
   const locationIdFromUrl = searchParams.get('locationId');
@@ -383,6 +384,7 @@ const App = () => {
 if (scanResultView) {
     const isGameComplete = scannedLocations.length === 3;
     const continueHandler = isGameComplete ? handleContinueToPrize : handleContinueToGame;
+
     return <ScanResultPage result={scanResultView} onContinue={continueHandler} isGameComplete={isGameComplete} />;
 }
 
