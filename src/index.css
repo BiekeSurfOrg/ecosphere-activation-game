@@ -3,6 +3,13 @@ html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
+
+  background-image: url('./assets/logo.png'); /* Коригирай пътя до логото */
+  background-repeat: no-repeat; /* Не повтаряй логото */
+  background-position: center center; /* Центрирай логото */
+  background-size: 50%; /* Промени размера, ако е необходимо (напр. 'contain', 'cover', '100px auto') */
+  background-attachment: fixed; /* (По избор) Ако искаш логото да стои на място, когато скролваш */
+
 }
 
 body {

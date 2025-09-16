@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Camera, Gift, Coins, RotateCcw, CheckCircle, Circle, X, MapPin, Info, Trophy } from 'lucide-react';
 import { BrowserRouter as Router, useSearchParams } from 'react-router-dom';
+import logo from './assets/logo.png';
 import { v4 as uuidv4 } from 'uuid';
 
 // Utils
@@ -369,6 +370,7 @@ const App = () => {
     }
 
     return (
+      
         // <div className="min-h-screen bg-[#00BFFF] py-8 px-4 flex flex-col items-center justify-center">
         //     <div className="max-w-md mx-auto w-full">
         //         <h1 className="text-3xl font-bold text-center text-white mb-8">
@@ -401,7 +403,13 @@ const App = () => {
         //         </div>
         //     </div>
         // </div>
+        
             <div className="min-h-screen bg-[#00BFFF] text-white flex items-center justify-center text-center">
+                          <img 
+                src={logo} 
+                alt="Your App Logo" 
+                className="absolute top-4 left-1/2 -translate-x-1/2 w-32 h-auto md:w-48 z-10" 
+            />
         <p>
             Scan een QR-code om te beginnen.
         </p>
