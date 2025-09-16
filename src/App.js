@@ -369,38 +369,43 @@ const App = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[#00BFFF] py-8 px-4 flex flex-col items-center justify-center">
-            <div className="max-w-md mx-auto w-full">
-                <h1 className="text-3xl font-bold text-center text-white mb-8">
-                    🎯 QR Avontuur
-                </h1>
-                <ProgressTracker
-                    scannedLocations={scannedLocations}
-                    totalCoins={totalCoins}
-                />
-                {scannedLocations.length < 3 && (
-                    <div className="rounded-lg p-6 mb-6 text-center text-white">
-                        <p>
-                            Scan de volgende QR-code met de camera van je telefoon om het avontuur voort te zetten.
-                        </p>
-                    </div>
-                )}
-                <WheelSpinner
-                    spins={wheelSpins}
-                    onSpin={handleWheelSpin}
-                />
-                <RewardModal
-                    isOpen={showRewardModal}
-                    onClose={() => setShowRewardModal(false)}
-                    onChoose={handleRewardChoice}
-                />
-                <div className="mt-8 p-4 bg-[#009ACD] bg-opacity-70 rounded-lg text-sm text-center">
-                    <p className="font-mono text-white">
-                        UUID: {userUuid.substring(0, 12)}...
-                    </p>
-                </div>
-            </div>
-        </div>
+        // <div className="min-h-screen bg-[#00BFFF] py-8 px-4 flex flex-col items-center justify-center">
+        //     <div className="max-w-md mx-auto w-full">
+        //         <h1 className="text-3xl font-bold text-center text-white mb-8">
+        //             🎯 QR Avontuur
+        //         </h1>
+        //         <ProgressTracker
+        //             scannedLocations={scannedLocations}
+        //             totalCoins={totalCoins}
+        //         />
+        //         {scannedLocations.length < 3 && (
+        //             <div className="rounded-lg p-6 mb-6 text-center text-white">
+        //                 <p>
+        //                     Scan de volgende QR-code met de camera van je telefoon om het avontuur voort te zetten.
+        //                 </p>
+        //             </div>
+        //         )}
+        //         <WheelSpinner
+        //             spins={wheelSpins}
+        //             onSpin={handleWheelSpin}
+        //         />
+        //         <RewardModal
+        //             isOpen={showRewardModal}
+        //             onClose={() => setShowRewardModal(false)}
+        //             onChoose={handleRewardChoice}
+        //         />
+        //         <div className="mt-8 p-4 bg-[#009ACD] bg-opacity-70 rounded-lg text-sm text-center">
+        //             <p className="font-mono text-white">
+        //                 UUID: {userUuid.substring(0, 12)}...
+        //             </p>
+        //         </div>
+        //     </div>
+        // </div>
+            <div className="min-h-screen bg-[#00BFFF] text-white flex items-center justify-center text-center">
+        <p>
+            Scan een QR-code om te beginnen.
+        </p>
+    </div>
     );
 }
 
