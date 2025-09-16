@@ -99,19 +99,12 @@ const ScanResultPage = ({ result, onContinue, isGameComplete }) => {
             <p>{additionalInfo}</p>
           </div>
         )}
-        {isGameComplete ? (
+        {isGameComplete && (
           <button
             onClick={onContinue}
             className="mt-4 w-full max-w-xs bg-green-500 text-white font-bold py-3 px-4 rounded-lg transition-colors hover:bg-green-600"
           >
             Claim your prize!
-          </button>
-        ) : (
-          <button
-            onClick={onContinue}
-            className="mt-4 w-full max-w-xs bg-white text-[#00BFFF] font-bold py-3 px-4 rounded-lg transition-colors hover:bg-gray-200"
-          >
-            Bekijk mijn voortgang
           </button>
         )}
       </div>
