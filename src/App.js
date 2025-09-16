@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Camera, Gift, Coins, RotateCcw, CheckCircle, Circle, X, MapPin, Info, Trophy } from 'lucide-react';
 import { BrowserRouter as Router, useSearchParams } from 'react-router-dom';
-import CongratulationsPage from './CongratulationsPage';
 import { v4 as uuidv4 } from 'uuid';
 
 // Utils
