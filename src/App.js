@@ -341,8 +341,8 @@ const App = () => {
 
 return (
     // Основен фон на приложението в KBC синьо
-    <div className="min-h-screen bg-[#0050A4] flex items-center justify-center px-4">
-        <div className="max-w-md mx-auto text-center">
+    <div className="min-h-screen min-w-full bg-[#0050A4] py-8 px-4">
+        <div className="max-w-md mx-auto">
             {/* Заглавие в бял цвят */}
             <h1 className="text-3xl font-bold text-white mb-8">
                 🎯 QR Avontuur
