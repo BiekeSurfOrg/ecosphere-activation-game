@@ -60,7 +60,7 @@ const ScanResultPage = ({ result, onContinue }) => {
     const { success, message, additionalInfo } = result;
 
     return (
-        <div className="min-h-screen bg-[#0050A4] text-white flex flex-col items-center justify-center p-4 text-center">
+        <div className="min-h-screen bg-[#00BFFF] text-white flex flex-col items-center justify-center p-4 text-center">
             {success ? (
                 <CheckCircle className="w-16 h-16 text-white mx-auto mb-4" />
             ) : (
@@ -77,7 +77,7 @@ const ScanResultPage = ({ result, onContinue }) => {
             
             <button
                 onClick={onContinue}
-                className="mt-4 w-full max-w-xs bg-white text-[#0050A4] font-bold py-3 px-4 rounded-lg transition-colors hover:bg-gray-200"
+                className="mt-4 w-full max-w-xs bg-white text-[#00BFFF] font-bold py-3 px-4 rounded-lg transition-colors hover:bg-gray-200"
             >
                 Bekijk mijn voortgang
             </button>
@@ -122,7 +122,7 @@ const ProgressTracker = ({ scannedLocations = [], totalCoins }) => {
             <div className="mt-4">
                 <div className="w-full bg-gray-200 rounded-full h-3">
                     <div
-                        className="bg-gradient-to-r from-[#0050A4] to-[#003A7A] h-3 rounded-full transition-all duration-500 ease-out"
+                        className="bg-gradient-to-r from-[#00BFFF] to-[#009ACD] h-3 rounded-full transition-all duration-500 ease-out"
                         style={{ width: `${(scannedLocations.length / 3) * 100}%` }}
                     ></div>
                 </div>
@@ -153,7 +153,7 @@ const RewardModal = ({ isOpen, onClose, onChoose }) => {
                     </button>
                     <button
                         onClick={() => onChoose('wheel')}
-                        className="w-full bg-[#0050A4] hover:bg-[#003A7A] text-white font-bold py-3 px-4 rounded-lg inline-flex items-center justify-center space-x-2 transition-colors"
+                        className="w-full bg-[#00BFFF] hover:bg-[#009ACD] text-white font-bold py-3 px-4 rounded-lg inline-flex items-center justify-center space-x-2 transition-colors"
                     >
                         <RotateCcw className="w-5 h-5" />
                         <span>Rad van Fortuin (5 spins)</span>
@@ -188,8 +188,8 @@ const WheelSpinner = ({ spins, onSpin }) => {
             <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">🎰 Rad van Fortuin</h2>
             <div className="text-center">
                 <div className="mb-4">
-                    <div className={`w-32 h-32 mx-auto border-8 border-[#0050A4] rounded-full flex items-center justify-center ${isSpinning ? 'animate-spin' : ''} bg-gradient-to-br from-[#E0F2F7] to-[#B2DAE8]`}>
-                        <RotateCcw className={`w-16 h-16 text-[#0050A4] ${isSpinning ? 'animate-pulse' : ''}`} />
+                    <div className={`w-32 h-32 mx-auto border-8 border-[#00BFFF] rounded-full flex items-center justify-center ${isSpinning ? 'animate-spin' : ''} bg-gradient-to-br from-[#E0F2F7] to-[#B2DAE8]`}>
+                        <RotateCcw className={`w-16 h-16 text-[#00BFFF] ${isSpinning ? 'animate-pulse' : ''}`} />
                     </div>
                 </div>
                 <p className="text-lg font-semibold text-gray-700 mb-4">
@@ -205,7 +205,7 @@ const WheelSpinner = ({ spins, onSpin }) => {
                 <button
                     onClick={spin}
                     disabled={isSpinning || spins <= 0}
-                    className="bg-[#0050A4] hover:bg-[#003A7A] disabled:bg-gray-400 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                    className="bg-[#00BFFF] hover:bg-[#009ACD] disabled:bg-gray-400 text-white font-bold py-3 px-6 rounded-lg transition-colors"
                 >
                     {isSpinning ? 'Draaien...' : '🎲 Draai aan het rad'}
                 </button>
@@ -326,7 +326,7 @@ const App = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-[#0050A4] flex items-center justify-center">
+            <div className="min-h-screen bg-[#00BFFF] flex items-center justify-center">
                 <div className="text-center">
                     <RotateCcw className="w-8 h-8 animate-spin text-white mx-auto mb-2" />
                     <p className="text-white">Laden...</p>
@@ -340,7 +340,7 @@ const App = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[#0050A4] py-8 px-4 flex flex-col items-center justify-center">
+        <div className="min-h-screen bg-[#00BFFF] py-8 px-4 flex flex-col items-center justify-center">
             <div className="max-w-md mx-auto w-full">
                 <h1 className="text-3xl font-bold text-center text-white mb-8">
                     🎯 QR Avontuur
@@ -365,7 +365,7 @@ const App = () => {
                     onClose={() => setShowRewardModal(false)}
                     onChoose={handleRewardChoice}
                 />
-                <div className="mt-8 p-4 bg-[#003A7A] bg-opacity-70 rounded-lg text-sm text-center">
+                <div className="mt-8 p-4 bg-[#009ACD] bg-opacity-70 rounded-lg text-sm text-center">
                     <p className="font-mono text-white">
                         UUID: {userUuid.substring(0, 12)}...
                     </p>

@@ -1,5 +1,8 @@
 html, body, #root {
-  background-color: #0050A4;
+  background-color: #00BFFF;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -9,9 +12,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: white; /* Add this to set default text color to white */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Make sure any text from other elements is also white */
+h1, h2, p, span {
+  color: white;
 }
