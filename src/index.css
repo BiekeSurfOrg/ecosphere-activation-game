@@ -30,13 +30,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: white; /* Add this to set default text color to white */
       /* Добавяме Flexbox за центриране */
-    display: flex;
-    align-items: center; /* Центрира съдържанието вертикално */
-    justify-content: center; /* Центрира съдържанието хоризонтално */
-    min-height: 100vh; /* Гарантира, че body заема цялата височина на екрана */
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;  */
 }
 
 /* Make sure any text from other elements is also white */
 h1, h2, p, span {
-  color: rgb(41, 40, 40);
+  color: rgb(28, 42, 102);
 }
