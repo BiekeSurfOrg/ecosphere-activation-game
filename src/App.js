@@ -81,7 +81,7 @@ const CongratulationsPage = ({ onContinue }) => {
 };
 
 // Component to display the scan result
-const ScanResultPage = ({ result, onContinue }) => {
+const ScanResultPage = ({ result, onContinue, isGameComplete }) => {
   const { success, message, additionalInfo } = result;
 
   return (
@@ -100,20 +100,20 @@ const ScanResultPage = ({ result, onContinue }) => {
           </div>
         )}
         {isGameComplete ? (
-                    <button
-                        onClick={onContinue}
-                        className="mt-4 w-full max-w-xs bg-green-500 text-white font-bold py-3 px-4 rounded-lg transition-colors hover:bg-green-600"
-                    >
-                        Claim your prize!
-                    </button>
-                ) : (
-                    <button
-                        onClick={onContinue}
-                        className="mt-4 w-full max-w-xs bg-white text-[#00BFFF] font-bold py-3 px-4 rounded-lg transition-colors hover:bg-gray-200"
-                    >
-                        Bekijk mijn voortgang
-                    </button>
-                )}
+          <button
+            onClick={onContinue}
+            className="mt-4 w-full max-w-xs bg-green-500 text-white font-bold py-3 px-4 rounded-lg transition-colors hover:bg-green-600"
+          >
+            Claim your prize!
+          </button>
+        ) : (
+          <button
+            onClick={onContinue}
+            className="mt-4 w-full max-w-xs bg-white text-[#00BFFF] font-bold py-3 px-4 rounded-lg transition-colors hover:bg-gray-200"
+          >
+            Bekijk mijn voortgang
+          </button>
+        )}
       </div>
     </div>
   );
@@ -258,10 +258,20 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [scanResultView, setScanResultView] = useState(null);
   const [showCongratulations, setShowCongratulations] = useState(false);
+
+  // Функциите трябва да бъдат дефинирани преди `return`
+  const handleContinueToGame = () => {
+    setSearchParams({}, { replace: true });
+    setScanResultView(null);
+  };
+  const handleContinueFromCongratulations = () => {
+    setShowCongratulations(false);
+    setScanResultView(null);
+  };
   const handleContinueToPrize = () => {
-        setScanResultView(null);
-        setShowCongratulations(true);
-    }
+    setScanResultView(null);
+    setShowCongratulations(true);
+  };
 
   const [searchParams, setSearchParams] = useSearchParams();
   const locationIdFromUrl = searchParams.get('locationId');
@@ -303,10 +313,6 @@ const App = () => {
         const additionalInfo = `Dit is extra informatie over ${qrData.company}, gelegen op ${qrData.address}, weergegeven na een succesvolle scan. Bezoek onze website: ${qrData.website}`;
 
         setScanResultView({ success: true, message, additionalInfo });
-
-        if (result.isGameComplete) {
-          setShowCongratulations(true);
-        }
       } else {
         setScanResultView({ success: false, message: result.message || 'Er is een fout opgetreden.' });
       }
@@ -314,15 +320,6 @@ const App = () => {
       setScanResultView({ success: false, message: 'Fout bij het verbinden met de server. Probeer het opnieuw.' });
     }
   }, [userUuid, scannedLocations]);
-
-  const handleContinueToGame = () => {
-    setSearchParams({}, { replace: true });
-    setScanResultView(null);
-  };
-  const handleContinueFromCongratulations = () => {
-    setShowCongratulations(false);
-    setScanResultView(null);
-  };
 
   const handleRewardChoice = async (choice) => {
     try {
@@ -380,22 +377,18 @@ const App = () => {
   if (showCongratulations) {
     return <CongratulationsPage onContinue={handleContinueFromCongratulations} />;
   }
-
-if (scanResultView) {
+  
+  if (scanResultView) {
     const isGameComplete = scannedLocations.length === 3;
     const continueHandler = isGameComplete ? handleContinueToPrize : handleContinueToGame;
 
     return <ScanResultPage result={scanResultView} onContinue={continueHandler} isGameComplete={isGameComplete} />;
-}
+  }
 
   return (
-    <div className="min-h-screen relative flex items-center justify-center text-center">
-      {/*
-            Това е overlay-ят, който ще седи под текста.
-            Трябва да е дете на основния контейнер.
-        */}
+    <div className="min-h-screen relative flex flex-col items-center justify-center text-center">
       <div className="absolute inset-0 bg-blue-900 opacity-20"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-24"> {/* Добавяме mt-24 за изместване надолу */}
+      <div className="relative p-4">
         <h1 className="text-3xl font-bold text-black">
           Scan een QR-code om te beginnen.
         </h1>
