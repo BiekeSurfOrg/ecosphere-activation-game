@@ -15,7 +15,7 @@ html, body, #root {
 
   /* Добавяне на филтър за по-добро съчетаване с текста */
   /* Опция 1: Омекотяване чрез brightness (препоръчително за светли лога) */
-  filter: brightness(1.2); /* Прави го малко по-светло, за да изпъкне леко от синия фон */
+  filter: brightness(1); /* Прави го малко по-светло, за да изпъкне леко от синия фон */
   
   /* Опция 2: Затъмняване чрез opacity (ако логото е по-тъмно или искаш да го смесиш повече) */
   /* filter: opacity(0.5); */ /* Прави логото 50% прозрачно */
@@ -29,9 +29,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white; /* Add this to set default text color to white */
+      /* Добавяме Flexbox за центриране */
+    display: flex;
+    align-items: center; /* Центрира съдържанието вертикално */
+    justify-content: center; /* Центрира съдържанието хоризонтално */
+    min-height: 100vh; /* Гарантира, че body заема цялата височина на екрана */
 }
 
 /* Make sure any text from other elements is also white */
 h1, h2, p, span {
-  color: white;
+  color: rgb(41, 40, 40);
 }
