@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Camera, Gift, Coins, RotateCcw, CheckCircle, Circle, X, MapPin, Info, Trophy } from 'lucide-react';
 import { BrowserRouter as Router, useSearchParams } from 'react-router-dom';
+import CongratulationsPage from './CongratulationsPage';
 import { v4 as uuidv4 } from 'uuid';
 
 // Utils
@@ -55,6 +56,27 @@ const api = {
     }
 };
 
+// --- Congratulations Page Component ---
+const CongratulationsPage = ({ onContinue }) => {
+    return (
+        <div className="min-h-screen bg-[#00BFFF] text-white flex flex-col items-center justify-center p-4 text-center">
+            <Trophy className="w-24 h-24 text-white mx-auto mb-6" />
+            <h1 className="text-4xl font-bold mb-4">
+                Proficiat!
+            </h1>
+            <p className="text-xl mb-8">
+                Je hebt 5 Kate coins gewonnen.
+            </p>
+            <button
+                onClick={onContinue}
+                className="bg-white text-[#00BFFF] font-bold py-3 px-8 rounded-full shadow-lg transition-colors hover:bg-gray-200"
+            >
+                Terug naar het spel
+            </button>
+        </div>
+    );
+};
+
 // Component to display the scan result
 const ScanResultPage = ({ result, onContinue }) => {
     const { success, message, additionalInfo } = result;
@@ -75,12 +97,12 @@ const ScanResultPage = ({ result, onContinue }) => {
                 </div>
             )}
             
-            <button
+            {/* <button
                 onClick={onContinue}
                 className="mt-4 w-full max-w-xs bg-white text-[#00BFFF] font-bold py-3 px-4 rounded-lg transition-colors hover:bg-gray-200"
             >
                 Bekijk mijn voortgang
-            </button>
+            </button> */}
         </div>
     );
 };
@@ -223,6 +245,7 @@ const App = () => {
     const [showRewardModal, setShowRewardModal] = useState(false);
     const [loading, setLoading] = useState(true);
     const [scanResultView, setScanResultView] = useState(null);
+    const [showCongratulations, setShowCongratulations] = useState(false);
 
     const [searchParams, setSearchParams] = useSearchParams();
     const locationIdFromUrl = searchParams.get('locationId');
@@ -266,7 +289,7 @@ const App = () => {
                 setScanResultView({ success: true, message, additionalInfo });
                 
                 if (result.isGameComplete) {
-                    setTimeout(() => setShowRewardModal(true), 1500);
+                    setShowCongratulations(true);
                 }
             } else {
                  setScanResultView({ success: false, message: result.message || 'Er is een fout opgetreden.' });
@@ -278,6 +301,10 @@ const App = () => {
 
     const handleContinueToGame = () => {
         setSearchParams({}, { replace: true });
+        setScanResultView(null);
+    };
+        const handleContinueFromCongratulations = () => {
+        setShowCongratulations(false);
         setScanResultView(null);
     };
 
@@ -333,6 +360,9 @@ const App = () => {
                 </div>
             </div>
         );
+    }
+    if (showCongratulations) {
+        return <CongratulationsPage onContinue={handleContinueFromCongratulations} />;
     }
     
     if (scanResultView) {
