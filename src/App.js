@@ -69,12 +69,6 @@ const CongratulationsPage = ({ onContinue }) => {
         <p className="text-xl mb-8">
           Je hebt 5 Kate coins gewonnen.
         </p>
-        <button
-          onClick={onContinue}
-          className="bg-white text-[#00BFFF] font-bold py-3 px-8 rounded-full shadow-lg transition-colors hover:bg-gray-200"
-        >
-          Terug naar het spel
-        </button>
       </div>
     </div>
   );
@@ -340,8 +334,8 @@ const App = () => {
   const demoQRData = {
     1: { locationId: 1, company: "Tech Solutions Ltd", address: "Vitosha Boulevard 123, Sofia", description: "Leading IT company in Bulgaria, specializing in web development and digital marketing.", website: "https://techsolutions.bg", bonus: 10 },
     2: { locationId: 2, company: "Green Energy Co", address: "Rakovski Street 45, Plovdiv", description: "Innovative solutions for renewable energy and sustainable development.", website: "https://greenenergy.bg", bonus: 15 },
-    3: { locationId: 3, company: "Digital Marketing Hub", address: "Independence Square 1, Varna", description: "Creative digital campaigns and growth strategies for your business.", website: "https://digitalmarketing.bg", bonus: 20 }
-  };
+    1500: { locationId: 1500, company: "Digital Marketing Hub", address: "Independence Square 1, Varna", description: "Creative digital campaigns and growth strategies for your business.", website: "https://digitalmarketing.bg", bonus: 20 }
+  };
 
   useEffect(() => {
     loadUserProgress();
