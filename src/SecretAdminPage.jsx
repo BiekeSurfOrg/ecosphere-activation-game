@@ -9,6 +9,8 @@ const SecretAdminPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [fetchResponse, setFetchResponse] = useState(null);
 
+const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
+
   const handleDecodeResult = async (result) => {
     console.log('QR Code detected:', result.getText());
     setIsScanning(false);
@@ -27,12 +29,20 @@ const SecretAdminPage = () => {
     setFetchResponse(null);
     
     try {
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Call the API to check if the user has a reward
+      const response = await fetch(`${API_BASE_URL}check/reward`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userUuid: qrText }),
+      });
+      const data = await response.json();
       
-      // Mock response based on QR code content
-      const mockResponse = `Response for QR code: "${qrText}" - Processed successfully at ${new Date().toLocaleString()}`;
-      setFetchResponse(mockResponse);
+      // Set the response from the server
+      if(data.success) {
+        setFetchResponse(`Response from server:  ${data.message}`);
+      } else {
+        setFetchResponse(`Error from server: ${data.status}  ${data.error}`);
+      }
     } catch (err) {
       console.error('Fetch error:', err);
       setError('Failed to process QR code data');
