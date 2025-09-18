@@ -9,7 +9,7 @@ const SecretAdminPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [fetchResponse, setFetchResponse] = useState(null);
   const [extraInfoToDisplay, setExtraInfoToDisplay] = useState(null);
-  cosnt [state, setStateOfScan] = useState(null);
+  const [state, setStateOfScan] = useState(null);
 
 const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
 
