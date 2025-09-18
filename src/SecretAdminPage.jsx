@@ -8,18 +8,19 @@ const SecretAdminPage = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [fetchResponse, setFetchResponse] = useState(null);
+  const [extraInfoToDisplay, setExtraInfoToDisplay] = useState(null);
 
 const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
 
   const handleDecodeResult = async (result) => {
     console.log('QR Code detected:', result.getText());
     setIsScanning(false);
+    setExtraInfoToDisplay('QR code detected: ' + result.getText() + '\n' );
     setScanResult({
       text: result.getText(),
       format: result.getBarcodeFormat().toString(),
       timestamp: new Date().toLocaleString()
     });
-    
     // Make mocked fetch request
     await makeFetchRequest(result.getText());
   };
@@ -27,8 +28,10 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
   const makeFetchRequest = async (qrText) => {
     setIsLoading(true);
     setFetchResponse(null);
+
     
     try {
+      setExtraInfoToDisplay(extraInfoToDisplay + '\n Making request with QR code data...');
       // Call the API to check if the user has a reward
       const response = await fetch(`${API_BASE_URL}check/reward`, {
         method: 'POST',
@@ -183,6 +186,8 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
           <div className="text-center">
             <h2 className="text-2xl font-bold text-white mb-4">Server Response</h2>
             <div className="bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg p-8 mb-6 max-w-2xl">
+              {extraInfoToDisplay && <p className="text-white text-lg font-semibold">STATUS: {extraInfoToDisplay}</p>}
+              <br />
               <p className="text-white text-lg font-semibold">{fetchResponse}</p>
             </div>
             <button
