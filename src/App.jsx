@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Camera, Gift, Coins, RotateCcw, CheckCircle, Circle, X, MapPin, Info, Trophy } from 'lucide-react';
-import { BrowserRouter as Router, useSearchParams } from 'react-router-dom';
+import { BrowserRouter as Router, useSearchParams, Routes, Route } from 'react-router-dom';
 import logo from './assets/logo.png';
 import { v4 as uuidv4 } from 'uuid';
 import QRCode from 'react-qr-code';
+import SecretAdminPage from './SecretAdminPage';
 
 // Utils
 const getUserUUID = () => {
@@ -423,7 +424,10 @@ const App = () => {
 export default function WrappedApp() {
   return (
     <Router>
-      <App />
+      <Routes>
+        <Route path="/secret-admin" element={<SecretAdminPage />} />
+        <Route path="/*" element={<App />} />
+      </Routes>
     </Router>
   );
 }
