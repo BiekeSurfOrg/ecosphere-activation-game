@@ -22,17 +22,6 @@ const SecretAdminPage = () => {
     await makeFetchRequest(result.getText());
   };
 
-  const handleDecodeError = (err) => {
-    // This is called for each failed decode attempt, so we don't show errors here
-    console.log('Decode error (normal):', err);
-  };
-
-  const handleError = (err) => {
-    console.error('Camera error:', err);
-    setError('Camera error occurred. Please check camera permissions and try again.');
-    setIsScanning(false);
-  };
-
   const makeFetchRequest = async (qrText) => {
     setIsLoading(true);
     setFetchResponse(null);
@@ -54,8 +43,15 @@ const SecretAdminPage = () => {
 
   const { ref, torch } = useZxing({
     onDecodeResult: handleDecodeResult,
-    onDecodeError: handleDecodeError,
-    onError: handleError,
+    onDecodeError: (err) => {
+    // This is called for each failed decode attempt, so we don't show errors here
+      console.log('Decode error (normal):', err);
+    },
+    onError: (err) => {
+      console.error('Camera error:', err);
+      setError('Camera error occurred. Please check camera permissions and try again.');
+      setIsScanning(false);
+    },
     paused: !isScanning,
     constraints: {
       video: {
