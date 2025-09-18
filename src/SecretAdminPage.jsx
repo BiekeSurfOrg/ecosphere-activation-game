@@ -6,8 +6,10 @@ const SecretAdminPage = () => {
   const [isScanning, setIsScanning] = useState(false);
   const [scanResult, setScanResult] = useState(null);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [fetchResponse, setFetchResponse] = useState(null);
 
-  const handleDecodeResult = (result) => {
+  const handleDecodeResult = async (result) => {
     console.log('QR Code detected:', result.getText());
     setIsScanning(false);
     setScanResult({
@@ -15,6 +17,9 @@ const SecretAdminPage = () => {
       format: result.getBarcodeFormat().toString(),
       timestamp: new Date().toLocaleString()
     });
+    
+    // Make mocked fetch request
+    await makeFetchRequest(result.getText());
   };
 
   const handleDecodeError = (err) => {
@@ -26,6 +31,25 @@ const SecretAdminPage = () => {
     console.error('Camera error:', err);
     setError('Camera error occurred. Please check camera permissions and try again.');
     setIsScanning(false);
+  };
+
+  const makeFetchRequest = async (qrText) => {
+    setIsLoading(true);
+    setFetchResponse(null);
+    
+    try {
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Mock response based on QR code content
+      const mockResponse = `Response for QR code: "${qrText}" - Processed successfully at ${new Date().toLocaleString()}`;
+      setFetchResponse(mockResponse);
+    } catch (err) {
+      console.error('Fetch error:', err);
+      setError('Failed to process QR code data');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const { ref, torch } = useZxing({
@@ -43,6 +67,8 @@ const SecretAdminPage = () => {
   const startScanning = () => {
     setError(null);
     setScanResult(null);
+    setFetchResponse(null);
+    setIsLoading(false);
     setIsScanning(true);
   };
 
@@ -54,11 +80,15 @@ const SecretAdminPage = () => {
     stopScanning();
     setScanResult(null);
     setError(null);
+    setFetchResponse(null);
+    setIsLoading(false);
   };
 
   const scanAgain = () => {
     setScanResult(null);
     setError(null);
+    setFetchResponse(null);
+    setIsLoading(false);
   };
 
   return (
@@ -72,7 +102,7 @@ const SecretAdminPage = () => {
       </button>
 
       <div className="flex flex-col items-center justify-center min-h-screen p-4">
-        {!isScanning && !scanResult && !error && (
+        {!isScanning && !scanResult && !error && !isLoading && !fetchResponse && (
           <div className="text-center">
             <h1 className="text-4xl font-bold text-white mb-8">Secret Admin</h1>
             <button
@@ -93,7 +123,7 @@ const SecretAdminPage = () => {
                 <video
                   ref={ref}
                   className="w-full h-full object-cover"
-                  style={{ transform: 'scaleX(-1)' }} // Mirror the video
+                  // style={{ transform: 'scaleX(-1)' }} // Mirror the video
                 />
               </div>
               {torch.isAvailable && (
@@ -135,26 +165,19 @@ const SecretAdminPage = () => {
           </div>
         )}
 
-        {scanResult && (
+        {isLoading && (
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-white mb-4">QR Code Information</h2>
-            <div className="bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg p-6 mb-6 max-w-md">
-              <div className="space-y-3">
-                <div>
-                  <label className="block text-white text-sm font-semibold mb-1">Content:</label>
-                  <p className="text-white text-lg font-mono break-all bg-black bg-opacity-30 p-2 rounded">
-                    {scanResult.text}
-                  </p>
-                </div>
-                <div>
-                  <label className="block text-white text-sm font-semibold mb-1">Format:</label>
-                  <p className="text-white">{scanResult.format}</p>
-                </div>
-                <div>
-                  <label className="block text-white text-sm font-semibold mb-1">Scanned at:</label>
-                  <p className="text-white">{scanResult.timestamp}</p>
-                </div>
-              </div>
+            <h2 className="text-2xl font-bold text-white mb-4">Processing QR Code...</h2>
+            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
+            <p className="text-white">Making request with QR code data...</p>
+          </div>
+        )}
+
+        {fetchResponse && (
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-white mb-4">Server Response</h2>
+            <div className="bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg p-8 mb-6 max-w-2xl">
+              <p className="text-white text-lg font-semibold">{fetchResponse}</p>
             </div>
             <button
               onClick={scanAgain}
@@ -164,6 +187,7 @@ const SecretAdminPage = () => {
             </button>
           </div>
         )}
+
       </div>
     </div>
   );
