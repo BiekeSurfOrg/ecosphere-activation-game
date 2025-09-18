@@ -9,10 +9,12 @@ const SecretAdminPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [fetchResponse, setFetchResponse] = useState(null);
   const [extraInfoToDisplay, setExtraInfoToDisplay] = useState(null);
+  cosnt [state, setStateOfScan] = useState(null);
 
 const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
 
   const handleDecodeResult = async (result) => {
+    setStateOfScan('decoding result');
     console.log('QR Code detected:', result.getText());
     setIsScanning(false);
     setExtraInfoToDisplay('QR code detected: ' + result.getText() + '\n' );
@@ -26,6 +28,7 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
   };
 
   const makeFetchRequest = async (qrText) => {
+    setStateOfScan('making request');
     setIsLoading(true);
     setFetchResponse(null);
 
@@ -33,24 +36,28 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
     try {
       setExtraInfoToDisplay(extraInfoToDisplay + '\n Making request with QR code data...');
       // Call the API to check if the user has a reward
-      const response = await fetch(`${API_BASE_URL}check/reward`, {
+      const response = await fetch(`${API_BASE_URL}check/reward?userUuid=${qrText}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userUuid: qrText }),
+        // body: JSON.stringify({ userUuid: qrText }),
       });
       const data = await response.json();
       
       // Set the response from the server
       if(data.success) {
         setFetchResponse(`Response from server:  ${data.message}`);
+        setStateOfScan('request done success');
       } else {
         setFetchResponse(`Error from server: ${data.status}  ${data.error}`);
+        setStateOfScan('request done error');
       }
     } catch (err) {
       console.error('Fetch error:', err);
       setError('Failed to process QR code data');
+      setStateOfScan('request not done error');
     } finally {
       setIsLoading(false);
+      
     }
   };
 
@@ -77,6 +84,7 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
   });
 
   const startScanning = () => {
+    setStateOfScan('scanning');
     setError(null);
     setScanResult(null);
     setFetchResponse(null);
@@ -112,6 +120,7 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
       >
         <ArrowLeft className="w-6 h-6" />
       </button>
+      {state && <p className="text-white text-lg font-semibold">STATE: {state}</p>}
 
       <div className="flex flex-col items-center justify-center min-h-screen p-4">
         {!isScanning && !scanResult && !error && !isLoading && !fetchResponse && (
