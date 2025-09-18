@@ -61,7 +61,7 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
       console.log('Decode error (normal):', err);
       setExtraInfoToDisplay(extraInfoToDisplay + '\n Decode error (normal):' + err);
       // setIsLoading(false);
-      setIsScanning(false);
+      // setIsScanning(false);
     },
     onError: (err) => {
       console.error('Camera error:', err);
