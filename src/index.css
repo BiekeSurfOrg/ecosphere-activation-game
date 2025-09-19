@@ -3,11 +3,6 @@ html, body, #root {
   margin: 0;
   padding: 0;
   
-  background-image: url('./assets/GED Activation Header.svg');
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
-  background-attachment: fixed;
   filter: brightness(1);
 }
 
@@ -20,6 +15,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: white;
 }
+
+.sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            height: 250px; /* Adjust height as needed */
+            background-image: url('./assets/GED Activation Header.svg');
+            background-repeat: no-repeat;
+            background-position: top;
+            background-size:contain;
+            filter: brightness(1);
+            width: 100%;
+          }
 
 h1, h2, p, span {
   color: rgb(28, 42, 102);

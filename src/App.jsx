@@ -4,6 +4,7 @@ import { BrowserRouter as Router, useSearchParams, Routes, Route } from 'react-r
 import { v4 as uuidv4 } from 'uuid';
 import QRCode from 'react-qr-code';
 import SecretAdminPage from './SecretAdminPage';
+import { ScanQrCode } from './ScanQRCode';
 
 // Utils
 const getUserUUID = () => {
@@ -106,7 +107,7 @@ const ScanResultPage = ({ result, onContinue, isGameComplete }) => {
 
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center text-center p-4">
-      <div className="absolute inset-0 bg-blue-900 opacity-20"></div>
+      {/* <div className="absolute inset-0 bg-blue-900 opacity-20"></div> */}
       <div className="relative p-4">
         {success ? (
           <CheckCircle className="w-16 h-16 text-white mx-auto mb-4" />
@@ -407,13 +408,15 @@ const App = () => {
 
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center text-center">
-      <div className="absolute inset-0 bg-blue-900 opacity-20"></div>
+            <header className="sticky-header">
+      </header>
       <div className="relative p-4">
         <h1 className="text-3xl font-bold text-black">
           Scan een QR-code om te beginnen.
         </h1>
       </div>
     </div>
+    
   );
 }
 
