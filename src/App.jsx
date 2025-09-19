@@ -373,6 +373,7 @@ const App = () => {
 
       const count = result.scannedLocations.length;
       const countTextMap = { 1: 'eerste', 2: 'tweede', 1500: 'derde' };
+      const message = `Je hebt met succes de ${countTextMap[count] || count + 'e'} QR-code gescand.`;
 
       const additionalInfo = `${qrData.company}
       ${qrData.address}
