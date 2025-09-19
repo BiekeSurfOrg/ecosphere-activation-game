@@ -4,7 +4,6 @@ import { BrowserRouter as Router, useSearchParams, Routes, Route } from 'react-r
 import { v4 as uuidv4 } from 'uuid';
 import {QRCodeSVG} from 'qrcode.react';
 import SecretAdminPage from './SecretAdminPage';
-import { ScanQrCode } from './ScanQRCode';
 
 // Utils
 const getUserUUID = () => {
