@@ -8,16 +8,16 @@ const SecretAdminPage = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [fetchResponse, setFetchResponse] = useState(null);
-  const [extraInfoToDisplay, setExtraInfoToDisplay] = useState(null);
-  const [state, setStateOfScan] = useState(null);
+  // const [extraInfoToDisplay, setExtraInfoToDisplay] = useState(null);
+  // const [state, setStateOfScan] = useState(null);
 
 const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
 
   const handleDecodeResult = async (result) => {
-    setStateOfScan('decoding result');
+    // setStateOfScan('decoding result');
     console.log('QR Code detected:', result.getText());
     setIsScanning(false);
-    setExtraInfoToDisplay('QR code detected: ' + result.getText() + '\n' );
+    // setExtraInfoToDisplay('QR code detected: ' + result.getText() + '\n' );
     setScanResult({
       text: result.getText(),
       format: result.getBarcodeFormat().toString(),
@@ -28,13 +28,13 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
   };
 
   const makeFetchRequest = async (qrText) => {
-    setStateOfScan('making request');
+    // setStateOfScan('making request');
     setIsLoading(true);
     setFetchResponse(null);
 
     
     try {
-      setExtraInfoToDisplay(extraInfoToDisplay + '\n Making request with QR code data...');
+      // setExtraInfoToDisplay(extraInfoToDisplay + '\n Making request with QR code data...');
       // Call the API to check if the user has a reward
       const response = await fetch(`${API_BASE_URL}check/reward?userUuid=${qrText}`, {
         method: 'POST',
@@ -46,10 +46,11 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
       // Set the response from the server
       if(data.success) {
         setFetchResponse(`Response from server:  ${data.message}`);
-        setStateOfScan('request done success');
+        // setFetchResponse(`Response from server:  ${JSON.stringify(data)}`);
+        // setStateOfScan('request done success');
       } else {
-        setFetchResponse(`Error from server: ${data.status}  ${data.error}`);
-        setStateOfScan('request done error');
+        setFetchResponse(`Invalid scan message: ${data.message}`);
+        // setStateOfScan('request done error');
       }
     } catch (err) {
       console.error('Fetch error:', err);
@@ -66,7 +67,7 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
     onDecodeError: (err) => {
     // This is called for each failed decode attempt, so we don't show errors here
       console.log('Decode error (normal):', err);
-      setExtraInfoToDisplay(extraInfoToDisplay + '\n Decode error (normal):' + err);
+      // setExtraInfoToDisplay(extraInfoToDisplay + '\n Decode error (normal):' + err);
       // setIsLoading(false);
       // setIsScanning(false);
     },
@@ -120,7 +121,8 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
       >
         <ArrowLeft className="w-6 h-6" />
       </button>
-      {state && <p className="text-white text-lg font-semibold">STATE: {state}</p>}
+      {/* {state && <p className="text-white text-lg font-semibold">STATE: {state}</p>} */}
+      {/* {scanResult && <p className="text-white text-lg font-semibold">Scan result: {JSON.stringify(scanResult)}</p>} */}
 
       <div className="flex flex-col items-center justify-center min-h-screen p-4">
         {!isScanning && !scanResult && !error && !isLoading && !fetchResponse && (
@@ -144,7 +146,6 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
                 <video
                   ref={ref}
                   className="w-full h-full object-cover"
-                  // style={{ transform: 'scaleX(-1)' }} // Mirror the video
                 />
               </div>
               {torch.isAvailable && (
@@ -198,8 +199,8 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
           <div className="text-center">
             <h2 className="text-2xl font-bold text-white mb-4">Server Response</h2>
             <div className="bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg p-8 mb-6 max-w-2xl">
-              {extraInfoToDisplay && <p className="text-white text-lg font-semibold">STATUS: {extraInfoToDisplay}</p>}
-              <br />
+              {/* {extraInfoToDisplay && <p className="text-white text-lg font-semibold">STATUS: {extraInfoToDisplay}</p>} */}
+              {/* <br /> */}
               <p className="text-white text-lg font-semibold">{fetchResponse}</p>
             </div>
             <button

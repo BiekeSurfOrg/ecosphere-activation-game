@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Camera, Gift, Coins, RotateCcw, CheckCircle, Circle, X, MapPin, Info, Trophy } from 'lucide-react';
 import { BrowserRouter as Router, useSearchParams, Routes, Route } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import QRCode from 'react-qr-code';
+import {QRCodeSVG} from 'qrcode.react';
 import SecretAdminPage from './SecretAdminPage';
 
 // Utils
@@ -89,10 +89,13 @@ const RewardQRPage = ({ userUuid }) => {
           Scan the QR code below to claim your reward.
         </p>
         <div className="bg-white p-4 rounded-lg shadow-lg inline-block">
-          <QRCode
+          <QRCodeSVG
             value={qrValue}
             size={256}
             level="H"
+            marginSize={4}
+            title='winning QR code'
+            fgColor='#0d2a50'
           />
         </div>
       </div>
