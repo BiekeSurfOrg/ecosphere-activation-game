@@ -29,8 +29,70 @@ body {
             width: 100%;
           }
 
-h1, h2, p, span {
+h1, h2, h3, p, span {
   color: rgb(28, 42, 102);
+}
+
+
+.header-image {
+  background-image: url('./assets/GED Activation Header.svg');
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 250px;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  gap: 4px;
+
+  font-size: 18px;
+  margin-left: 12px;
+  margin-right: 12px;
+
+}
+
+.page-container p, h2, h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.title-text {
+  margin-top:12px;
+  font-weight: 6s00;
+}
+.subtitle-text {
+  margin-top:12px;
+  font-weight: 500;
+}
+
+.icons-border {
+  border: 3px  solid #00AEEF; 
+  border-radius: 8px;
+  display: flex;
+  padding: 4px;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px
+}
+
+.icons-border p {
+  color: #00AEEF;
+  font-weight: 500;
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: row;
+  gap:15px;
+}
+
+.single-icons-border {
+  border: 4px  solid #00AEEF; 
+  border-radius: 8px;
+
 }
 .sticky-footer {
   position: sticky;
