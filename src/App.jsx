@@ -309,36 +309,46 @@ const App = () => {
   }, [userUuid]);
 
   const processScan = useCallback(async (qrData) => {
-    if (scannedLocations.some(loc => loc.locationId === qrData.locationId)) {
-      setScanResultView({
-        success: false,
-        message: 'Je hebt deze QR-code al gescand.',
-        additionalInfo: 'Zoek de volgende code om verder te gaan.'
-      });
-      return;
+ if (scannedLocations.length === 3) {
+    setScanResultView({
+      success: true,
+      message: "🎉 Je hebt alle QR-codes al gescand!",
+      additionalInfo: `Dit is extra informatie over ${qrData.company}, gelegen op ${qrData.address}. Bezoek onze website: ${qrData.website}`
+    });
+    return;
+  }
+
+  // Ако вече е сканиран този QR, но играта не е завършена → стандартното съобщение
+  if (scannedLocations.some(loc => loc.locationId === qrData.locationId)) {
+    setScanResultView({
+      success: false,
+      message: 'Je hebt deze QR-code al gescand.',
+      additionalInfo: 'Zoek de volgende code om verder te gaan.'
+    });
+    return;
+  }
+
+  try {
+    const result = await api.scanQR(userUuid, qrData);
+
+    if (result.success) {
+      setScannedLocations(result.scannedLocations);
+      setTotalCoins(result.totalCoins);
+
+      const count = result.scannedLocations.length;
+      const countTextMap = { 1: 'eerste', 2: 'tweede', 1500: 'derde' };
+      const message = `Je hebt met succes de ${countTextMap[count] || count + 'e'} QR-code gescand.`;
+
+      const additionalInfo = `Dit is extra informatie over ${qrData.company}, gelegen op ${qrData.address}, weergegeven na een succesvolle scan. Bezoek onze website: ${qrData.website}`;
+
+      setScanResultView({ success: true, message, additionalInfo });
+    } else {
+      setScanResultView({ success: false, message: result.message || 'Er is een fout opgetreden.' });
     }
-
-    try {
-      const result = await api.scanQR(userUuid, qrData);
-
-      if (result.success) {
-        setScannedLocations(result.scannedLocations);
-        setTotalCoins(result.totalCoins);
-
-        const count = result.scannedLocations.length;
-        const countTextMap = { 1: 'eerste', 2: 'tweede', 1500: 'derde' };
-        const message = `Je hebt met succes de ${countTextMap[count] || count + 'e'} QR-code gescand.`;
-
-        const additionalInfo = `Dit is extra informatie over ${qrData.company}, gelegen op ${qrData.address}, weergegeven na een succesvolle scan. Bezoek onze website: ${qrData.website}`;
-
-        setScanResultView({ success: true, message, additionalInfo });
-      } else {
-        setScanResultView({ success: false, message: result.message || 'Er is een fout opgetreden.' });
-      }
-    } catch (error) {
-      setScanResultView({ success: false, message: 'Fout bij het verbinden met de server. Probeer het opnieuw.' });
-    }
-  }, [userUuid, scannedLocations]);
+  } catch (error) {
+    setScanResultView({ success: false, message: 'Fout bij het verbinden met de server. Probeer het opnieuw.' });
+  }
+}, [userUuid, scannedLocations]);
 
   const handleRewardChoice = async (choice) => {
     try {
