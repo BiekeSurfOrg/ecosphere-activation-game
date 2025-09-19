@@ -33,7 +33,7 @@ h1, h2, p, span {
   color: rgb(28, 42, 102);
 }
 .sticky-footer {
-  position:fixed;
+  position: sticky;
   bottom: 0;
   z-index: 10;
   height: 220px;
