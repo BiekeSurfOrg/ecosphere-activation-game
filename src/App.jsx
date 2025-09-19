@@ -104,33 +104,67 @@ const RewardQRPage = ({ userUuid }) => {
 };
 
 // Component to display the scan result
-const ScanResultPage = ({ result, onContinue, isGameComplete }) => {
+const ScanResultPage = ({ result, onContinue, isGameComplete, locationId  }) => {
   const { success, message, additionalInfo } = result;
+  // Footer component based on locationId
+  const renderFooter = () => {
+    switch(locationId) {
+      case 1:
+        return (
+          <div className="sticky-footer footer-location-1">
+            {/* Footer will be displayed via CSS background-image */}
+          </div>
+        );
+      case 2:
+        return (
+          <div className="sticky-footer footer-location-2">
+            {/* Footer will be displayed via CSS background-image */}
+          </div>
+        );
+      case 1500:
+        return (
+          <div className="sticky-footer footer-location-3">
+            {/* Footer will be displayed via CSS background-image */}
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
-    <div className="min-h-screen relative flex flex-col items-center justify-center text-center p-4">
-      {/* <div className="absolute inset-0 bg-blue-900 opacity-20"></div> */}
-      <div className="relative p-4">
-        {success ? (
-          <CheckCircle className="w-16 h-16 text-white mx-auto mb-4" />
-        ) : (
-          <X className="w-16 h-16 text-white mx-auto mb-4" />
-        )}
-        <h2 className="text-2xl font-bold mb-3">{message}</h2>
-        {additionalInfo && (
-          <div className="text-center bg-white bg-opacity-10 border border-white border-opacity-20 p-4 rounded-lg my-6 max-w-sm">
-            <p>{additionalInfo}</p>
-          </div>
-        )}
-        {isGameComplete && (
-          <button
-            onClick={onContinue}
-            className="mt-4 w-full max-w-xs bg-green-500 text-white font-bold py-3 px-4 rounded-lg transition-colors hover:bg-green-600"
-          >
-            Claim your prize!
-          </button>
-        )}
+    <div className="min-h-screen relative flex flex-col">
+      {/* Main content */}
+      <div className="flex-1 flex flex-col items-center justify-center text-center p-4">
+        <div className="relative p-4">
+          {success ? (
+            <CheckCircle className="w-16 h-16 text-white mx-auto mb-4" />
+          ) : (
+            <X className="w-16 h-16 text-white mx-auto mb-4" />
+          )}
+          <h2 className="text-2xl font-bold mb-3">{message}</h2>
+          {additionalInfo && (
+            <div className="text-center bg-white bg-opacity-10 border border-white border-opacity-20 p-4 rounded-lg my-6 max-w-sm">
+              <p>{additionalInfo}</p>
+            </div>
+          )}
+          {isGameComplete && (
+            <button
+              onClick={onContinue}
+              className="mt-4 w-full max-w-xs bg-green-500 text-white font-bold py-3 px-4 rounded-lg transition-colors hover:bg-green-600"
+            >
+              Claim your prize!
+            </button>
+          )}
+        </div>
       </div>
+      
+      {/* Footer section */}
+      {success && (
+        <div className="w-full">
+          {renderFooter()}
+        </div>
+      )}
     </div>
   );
 };
@@ -374,7 +408,7 @@ const App = () => {
   };
 
   const demoQRData = {
-    1: { locationId: 1, company: "Tech Solutions Ltd", address: "Vitosha Boulevard 123, Sofia", description: "Leading IT company in Bulgaria, specializing in web development and digital marketing.", website: "https://techsolutions.bg", bonus: 10 },
+    1: { locationId: 1, company: "Hi Team Blue Colleague!", address: "Thanks for joining us on this Group Ecosphere Day. Make yourself ready for a day full of Group energy, lots of enthusiasm, inspiration and an enlightening view on the future of KBC.", description: "Jour journey starts NOW!", website: "Scan the QR-codes throughout the morning sessions in which Johan Thijs, Erik Luts and Karen Van De Woestyne will elaborate on the ecosphere strategy to activate to participate and win grand prizes! Enjoy your refreshing breakfast. At 9 o’clock we start with our Ecosphere Journey and this journey is all about the triple win.", bonus: 10 },
     2: { locationId: 2, company: "Green Energy Co", address: "Rakovski Street 45, Plovdiv", description: "Innovative solutions for renewable energy and sustainable development.", website: "https://greenenergy.bg", bonus: 15 },
     42: { locationId: 42, company: "Surf studio", address: "Leuven", description: "test page", bonus: 25 },
     1500: { locationId: 1500, company: "Digital Marketing Hub", address: "Independence Square 1, Varna", description: "Creative digital campaigns and growth strategies for your business.", website: "https://digitalmarketing.bg", bonus: 20 }

@@ -20,7 +20,7 @@ body {
             position: sticky;
             top: 0;
             z-index: 10;
-            height: 250px; /* Adjust height as needed */
+            height: 250px;
             background-image: url('./assets/GED Activation Header.svg');
             background-repeat: no-repeat;
             background-position: top;
@@ -32,3 +32,26 @@ body {
 h1, h2, p, span {
   color: rgb(28, 42, 102);
 }
+.sticky-footer {
+  position:fixed;
+  bottom: 0;
+  z-index: 10;
+  height: 220px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  filter: brightness(1);
+  width: 100%;
+}
+
+.footer-location-1 {
+  background-image: url('./public/p1.jpg'); /* Replace with your image path */
+}
+
+.footer-location-2 {
+  background-image: url('./public/p2.jpg'); /* Replace with your image path */
+}
+
+.footer-location-3 {
+  background-image: url('./public/p3.jpg'); /* Replace with your image path */
+}  
