@@ -346,8 +346,10 @@ const App = () => {
  if (scannedLocations.length === 3) {
     setScanResultView({
       success: true,
-      message: "🎉 Je hebt alle QR-codes al gescand!",
-      additionalInfo: `Dit is extra informatie over ${qrData.company}, gelegen op ${qrData.address}. Bezoek onze website: ${qrData.website}`
+      // message: "🎉 Je hebt alle QR-codes al gescand!",
+      additionalInfo: `${qrData.company}
+      ${qrData.address}
+      ${qrData.website}`
     });
     return;
   }
@@ -371,9 +373,10 @@ const App = () => {
 
       const count = result.scannedLocations.length;
       const countTextMap = { 1: 'eerste', 2: 'tweede', 1500: 'derde' };
-      const message = `Je hebt met succes de ${countTextMap[count] || count + 'e'} QR-code gescand.`;
 
-      const additionalInfo = `Dit is extra informatie over ${qrData.company}, gelegen op ${qrData.address}, weergegeven na een succesvolle scan. Bezoek onze website: ${qrData.website}`;
+      const additionalInfo = `${qrData.company}
+      ${qrData.address}
+      ${qrData.website}`;
 
       setScanResultView({ success: true, message, additionalInfo });
     } else {
