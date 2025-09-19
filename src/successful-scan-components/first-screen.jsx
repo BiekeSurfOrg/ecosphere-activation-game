@@ -1,7 +1,15 @@
+import React from "react";
+
+/**
+ * This is the static part of screen 1
+ * Does not contain the QR-codes
+ *
+ * @returns JSX
+ */
 const FirstScreen = () => {
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <header className="header-image">dsadsa</header>
+    <div className="flex-column">
+      <header className="header-image"></header>
       <div className="page-container">
         <h2 className="title-text">Hi Team Blue Colleague!</h2>
 
@@ -27,7 +35,19 @@ const FirstScreen = () => {
             <div className="single-icons-border">icon</div>
           </div>
         </div>
+        <h3 className="subtitle-text">KBC:</h3>
+        <p>
+          The orchestrator of the triple win As an orchestrator, KBC creates
+          scalable ecosystems in which the sum of the parts yields more than the
+          individual contribu- tions. By seamlessly integrating partners across
+          different customer journeys, we can anticipate and fulfill the
+          customer’s needs, leading to increased core product sales
+        </p>
+
+        <p>Scan the other QR codes to win!</p>
       </div>
     </div>
   );
 };
+
+export default FirstScreen;

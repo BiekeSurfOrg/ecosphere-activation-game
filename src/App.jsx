@@ -4,6 +4,7 @@ import { BrowserRouter as Router, useSearchParams, Routes, Route } from 'react-r
 import { v4 as uuidv4 } from 'uuid';
 import {QRCodeSVG} from 'qrcode.react';
 import SecretAdminPage from './SecretAdminPage';
+// import SecondScreen from './successful-scan-components/second-screen';
 
 // Utils
 const getUserUUID = () => {
@@ -341,6 +342,10 @@ const App = () => {
       setLoading(false);
     }
   }, [userUuid]);
+
+  // return (
+  //   <ThirdScreen />
+  // )
 
   const processScan = useCallback(async (qrData) => {
  if (scannedLocations.length === 3) {
