@@ -385,13 +385,6 @@ const App = () => {
   }, [loadUserProgress]);
 
   useEffect(() => {
-    if (!loading && scannedLocations.length === 3 && !showRewardQR && !showCongratulations) {
-      setShowCongratulations(true);
-      setShowRewardQR(true);
-    }
-  }, [loading, scannedLocations, showRewardQR, showCongratulations]);
-
-  useEffect(() => {
     if (!loading && locationIdFromUrl && !scanProcessedRef.current) {
       const qrData = demoQRData[locationIdFromUrl];
       if (qrData) {
