@@ -21,7 +21,7 @@ body {
             top: 0;
             z-index: 10;
             height: 250px;
-            background-image: url('./public/assets/GED Activation Header.svg');
+            background-image: url('./assets/GED Activation Header.svg');
             background-repeat: no-repeat;
             background-position: top;
             background-size:contain;
@@ -45,13 +45,13 @@ h1, h2, p, span {
 }
 
 .footer-location-1 {
-  background-image: url('./public/assets/p1.jpg'); /* Replace with your image path */
+  background-image: url('./assets/p1.jpg'); /* Replace with your image path */
 }
 
 .footer-location-2 {
-  background-image: url('./public/assets/p2.jpg'); /* Replace with your image path */
+  background-image: url('./assets/p2.jpg'); /* Replace with your image path */
 }
 
 .footer-location-3 {
-  background-image: url('./public/assets/p3.jpg'); /* Replace with your image path */
+  background-image: url('./assets/p3.jpg'); /* Replace with your image path */
 }  
