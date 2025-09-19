@@ -96,9 +96,6 @@ const RewardQRPage = ({ userUuid }) => {
             level="H"
           />
         </div>
-        <p className="mt-4 text-gray-700 font-mono text-sm break-all">
-          User ID: {userUuid}
-        </p>
       </div>
     </div>
   );
@@ -367,6 +364,7 @@ const App = () => {
   const demoQRData = {
     1: { locationId: 1, company: "Tech Solutions Ltd", address: "Vitosha Boulevard 123, Sofia", description: "Leading IT company in Bulgaria, specializing in web development and digital marketing.", website: "https://techsolutions.bg", bonus: 10 },
     2: { locationId: 2, company: "Green Energy Co", address: "Rakovski Street 45, Plovdiv", description: "Innovative solutions for renewable energy and sustainable development.", website: "https://greenenergy.bg", bonus: 15 },
+    42: { locationId: 42, company: "Surf studio", address: "Leuven", description: "test page", bonus: 25 },
     1500: { locationId: 1500, company: "Digital Marketing Hub", address: "Independence Square 1, Varna", description: "Creative digital campaigns and growth strategies for your business.", website: "https://digitalmarketing.bg", bonus: 20 }
   };
 
