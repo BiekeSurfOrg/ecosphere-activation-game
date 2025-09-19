@@ -3,10 +3,10 @@ html, body, #root {
   margin: 0;
   padding: 0;
   
-  background-color: #ADD8E6;
   background-image: url('./assets/GED Activation Header.svg');
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: top;
+  background-size: cover;
   background-attachment: fixed;
   filter: brightness(1);
 }
