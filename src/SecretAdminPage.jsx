@@ -44,14 +44,14 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
       const data = await response.json();
       
       // Set the response from the server
-      if(data.success) {
-        setFetchResponse(`Response from server:  ${data.message}`);
-        // setFetchResponse(`Response from server:  ${JSON.stringify(data)}`);
-        // setStateOfScan('request done success');
-      } else {
-        setFetchResponse(`Invalid scan message: ${data.message}`);
-        // setStateOfScan('request done error');
-      }
+      setFetchResponse(data.message);
+      // if(data.success) {
+      //   // setFetchResponse(`Response from server:  ${JSON.stringify(data)}`);
+      //   // setStateOfScan('request done success');
+      // } else {
+      //   setFetchResponse(`Invalid scan message: ${data.message}`);
+      //   // setStateOfScan('request done error');
+      // }
     } catch (err) {
       console.error('Fetch error:', err);
       setError('Failed to process QR code data');
