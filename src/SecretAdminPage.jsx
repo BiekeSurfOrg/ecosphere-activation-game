@@ -55,7 +55,7 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
     } catch (err) {
       console.error('Fetch error:', err);
       setError('Failed to process QR code data');
-      setStateOfScan('request not done error');
+      // setStateOfScan('request not done error');
     } finally {
       setIsLoading(false);
       
@@ -85,7 +85,7 @@ const API_BASE_URL = 'https://kate-voice-backend-2ad12d55f690.herokuapp.com/';
   });
 
   const startScanning = () => {
-    setStateOfScan('scanning');
+    // setStateOfScan('scanning');
     setError(null);
     setScanResult(null);
     setFetchResponse(null);
