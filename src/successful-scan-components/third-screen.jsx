@@ -19,14 +19,17 @@ const ThirdScreen = () => {
           Money for the customer!
         </p>
 
-        <div className="icons-border">
+        {/* <div className="icons-border">
           <p>The triple win</p>
           <div className="icon-container">
             <div className="single-icons-border">icon</div>
             <div className="single-icons-border">icon</div>
             <div className="single-icons-border">icon</div>
           </div>
-        </div>
+        </div> */}
+
+        <img src="./GED Activation -Triple win Partner.svg" />
+
         <h3 className="subtitle-text">The partner:</h3>
         <p>
           To optimally fulfil the needs of the customer, we count on the

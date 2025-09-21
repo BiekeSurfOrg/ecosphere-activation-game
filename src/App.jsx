@@ -4,7 +4,10 @@ import { BrowserRouter as Router, useSearchParams, Routes, Route } from 'react-r
 import { v4 as uuidv4 } from 'uuid';
 import {QRCodeSVG} from 'qrcode.react';
 import SecretAdminPage from './SecretAdminPage';
-// import SecondScreen from './successful-scan-components/second-screen';
+import FirstScreen from './successful-scan-components/first-screen';
+import SecondScreen from './successful-scan-components/second-screen';
+import ThirdScreen from './successful-scan-components/third-screen';
+import QRCodeContainer from './QRcodeContainer/QRCodeContainer'
 
 // Utils
 const getUserUUID = () => {
@@ -105,50 +108,17 @@ const RewardQRPage = ({ userUuid }) => {
 };
 
 // Component to display the scan result
-const ScanResultPage = ({ result, onContinue, isGameComplete, locationId  }) => {
+const ScanResultPage = ({ result, onContinue, isGameComplete, locationId, scannedLocations  }) => {
   const { success, message, additionalInfo } = result;
-  // Footer component based on locationId
-  const renderFooter = () => {
-    switch(locationId) {
-      case 1:
-        return (
-          <div className="sticky-footer footer-location-1">
-            {/* Footer will be displayed via CSS background-image */}
-          </div>
-        );
-      case 2:
-        return (
-          <div className="sticky-footer footer-location-2">
-            {/* Footer will be displayed via CSS background-image */}
-          </div>
-        );
-      case 1500:
-        return (
-          <div className="sticky-footer footer-location-3">
-            {/* Footer will be displayed via CSS background-image */}
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
+  
+  if(locationId == 1 || locationId == "1") {
+    return (
+      <div>
+        <FirstScreen />
+        <QRCodeContainer scannedQRs={scannedLocations || []} />
 
-  return (
-    <div className="min-h-screen relative flex flex-col">
-      {/* Main content */}
-      <div className="flex-1 flex flex-col items-center justify-center text-center p-4">
-        <div className="relative p-4">
-          {success ? (
-            <CheckCircle className="w-16 h-16 text-white mx-auto mb-4" />
-          ) : (
-            <X className="w-16 h-16 text-white mx-auto mb-4" />
-          )}
+        {/* No idea why there's tailwind here /: */}
           <h2 className="text-2xl font-bold mb-3">{message}</h2>
-          {additionalInfo && (
-            <div className="text-center bg-white bg-opacity-10 border border-white border-opacity-20 p-4 rounded-lg my-6 max-w-sm">
-              <p>{additionalInfo}</p>
-            </div>
-          )}
           {isGameComplete && (
             <button
               onClick={onContinue}
@@ -157,17 +127,36 @@ const ScanResultPage = ({ result, onContinue, isGameComplete, locationId  }) => 
               Claim your prize!
             </button>
           )}
-        </div>
       </div>
-      
-      {/* Footer section */}
-      {success && (
-        <div className="w-full">
-          {renderFooter()}
-        </div>
-      )}
+    )
+  }
+  
+  if(locationId == 2 || locationId == "2") {
+    return (
+      <div>
+        <SecondScreen />
+        <QRCodeContainer scannedQRs={scannedLocations || []} />
+      </div>
+      )
+    }
+    
+    if(locationId == 1500 || locationId == "1500") {
+      return (
+        <div style={{height: "fit-content"}}>
+        <ThirdScreen />
+        <QRCodeContainer scannedQRs={scannedLocations || []} />
+      </div>
+      )
+  }
+
+  return (
+    <div>
+      <p>
+        Error, something happened
+      </p>
     </div>
-  );
+  )
+
 };
 
 // Progress Tracker Component
@@ -343,10 +332,6 @@ const App = () => {
     }
   }, [userUuid]);
 
-  // return (
-  //   <ThirdScreen />
-  // )
-
   const processScan = useCallback(async (qrData) => {
  if (scannedLocations.length === 3) {
     setScanResultView({
@@ -458,12 +443,12 @@ const App = () => {
     const isGameComplete = scannedLocations.length === 3;
     const continueHandler = isGameComplete ? handleContinueToPrize : handleContinueToGame;
 
-    return <ScanResultPage result={scanResultView} onContinue={continueHandler} isGameComplete={isGameComplete} />;
+    return <ScanResultPage result={scanResultView} onContinue={continueHandler} isGameComplete={isGameComplete} locationId={locationIdFromUrl} scannedLocations={scannedLocations} />;
   }
 
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center text-center">
-            <header className="sticky-header">
+      <header className="sticky-header">
       </header>
       <div className="relative p-4">
         <h1 className="text-3xl font-bold text-black">

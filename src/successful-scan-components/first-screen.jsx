@@ -27,14 +27,16 @@ const FirstScreen = () => {
           Ecosphere Journey and this journey is all about the triple win.
         </p>
 
-        <div className="icons-border">
+        {/* <div className="icons-border">
           <p>The triple win</p>
           <div className="icon-container">
             <div className="single-icons-border">icon</div>
             <div className="single-icons-border">icon</div>
             <div className="single-icons-border">icon</div>
           </div>
-        </div>
+        </div> */}
+        <img src="./GED Activation -Triple win KBC.svg" />
+
         <h3 className="subtitle-text">KBC:</h3>
         <p>
           The orchestrator of the triple win As an orchestrator, KBC creates

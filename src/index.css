@@ -45,14 +45,12 @@ h1, h2, h3, p, span {
 .page-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   gap: 8px;
 
   font-size: 18px;
   margin-left: 12px;
   margin-right: 12px;
-  
-
 }
 
 .page-container p, h2, h3 {
@@ -125,3 +123,17 @@ h1, h2, h3, p, span {
 .footer-location-3 {
   background-image: url('./assets/p3.jpg'); /* Replace with your image path */
 }  
+
+.QR-image-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
+.QR-image-container p {
+  color: #00AEEF;
+  font-weight: 400px;
+  font-size:32px;
+  padding-bottom:4px;
+}
