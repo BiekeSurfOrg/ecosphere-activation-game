@@ -34,7 +34,7 @@ const ThirdScreen = () => {
         <p>
           To optimally fulfil the needs of the customer, we count on the
           experise of our partners. In return, they get access to a broad and
-          high-value, broad customer base, supported by KBC's intent detection
+          high-value, broad customer base, supported by KBC&apos;s intent detection
           algorithms and matchmaking. This means a new source of income via new
           customers with a higher conversion rate.
         </p>
