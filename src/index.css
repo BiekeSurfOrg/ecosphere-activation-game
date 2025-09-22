@@ -137,3 +137,25 @@ h1, h2, h3, p, span {
   font-size:32px;
   padding-bottom:4px;
 }
+
+.button-claim-prize {
+  border: #53ae47;
+  border-radius: 20px;
+  padding: 6px 20px;
+  margin: 12px 12px 2px 12px;
+  background-color: #53ae47;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+
+  position: relative; 
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  
+}

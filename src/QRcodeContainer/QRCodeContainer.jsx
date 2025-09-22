@@ -5,7 +5,6 @@ import React from "react";
  * @returns JSX
  */
 const QRCodeContainer = ({ scannedQRs }) => {
-
   return (
     <div className="page-container">
       <div className="QR-image-container">
@@ -25,8 +24,8 @@ const QRCodeContainer = ({ scannedQRs }) => {
         <img
           src={
             scannedQRs.includes(2)
-            ? "./GED Activation -QR with checkmark.svg"
-            : "./GED Activation -QR without Checkmark.svg"
+              ? "./GED Activation -QR with checkmark.svg"
+              : "./GED Activation -QR without Checkmark.svg"
           }
           alt={`QR image`}
           style={{ width: "160px" }}

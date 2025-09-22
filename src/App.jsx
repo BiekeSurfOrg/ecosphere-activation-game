@@ -10,6 +10,7 @@ import {
   MapPin,
   Info,
   Trophy,
+  LockOpen,
 } from "lucide-react";
 import {
   BrowserRouter as Router,
@@ -144,12 +145,13 @@ const ScanResultPage = ({
         {/* No idea why there's tailwind here /: */}
         <h2 className="text-2xl font-bold mb-3">{message}</h2>
         {isGameComplete && (
-          <button
-            onClick={onContinue}
-            className="mt-4 w-full max-w-xs bg-green-500 text-white font-bold py-3 px-4 rounded-lg transition-colors hover:bg-green-600"
-          >
-            Claim your prize!
-          </button>
+          <div>
+            <button onClick={onContinue} className="button-claim-prize">
+              Claim your prize!
+              <LockOpen />
+            </button>
+            <br />
+          </div>
         )}
       </div>
     );
@@ -172,7 +174,7 @@ const ScanResultPage = ({
       </div>
     );
   }
-  
+
   if (locationId == 42 || locationId == "42") {
     return (
       <div style={{ height: "fit-content" }}>
