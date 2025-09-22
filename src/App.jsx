@@ -24,6 +24,7 @@ import FirstScreen from "./successful-scan-components/first-screen";
 import SecondScreen from "./successful-scan-components/second-screen";
 import ThirdScreen from "./successful-scan-components/third-screen";
 import QRCodeContainer from "./QRcodeContainer/QRCodeContainer";
+import DummyScreen from "./successful-scan-components/dummy-screen";
 
 // Utils
 const getUserUUID = () => {
@@ -167,6 +168,15 @@ const ScanResultPage = ({
     return (
       <div style={{ height: "fit-content" }}>
         <ThirdScreen />
+        <QRCodeContainer scannedQRs={scannedLocations || []} />
+      </div>
+    );
+  }
+  
+  if (locationId == 42 || locationId == "42") {
+    return (
+      <div style={{ height: "fit-content" }}>
+        <DummyScreen />
         <QRCodeContainer scannedQRs={scannedLocations || []} />
       </div>
     );
