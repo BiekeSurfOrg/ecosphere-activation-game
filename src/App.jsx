@@ -70,11 +70,14 @@ const api = {
   },
   async claimReward(userUuid, choice) {
     try {
-      const response = await fetch(`${API_BASE_URL}/check/reward?userUuid=${userUuid}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ rewardType: choice })
-      });
+      const response = await fetch(
+        `${API_BASE_URL}/check/reward?userUuid=${userUuid}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ rewardType: choice }),
+        }
+      );
       return await response.json();
     } catch (error) {
       console.error("API Error:", error);
@@ -101,49 +104,41 @@ const RewardQRPage = ({ userUuid }) => {
   const qrValue = userUuid; // Стойността на QR кода е UUID на потребителя
 
   return (
-<div className="flex-column">
+    <div className="flex-column">
       <header className="header-image"></header>
       <div className="page-container">
         <h2 className="title-text">Thanks for participating!</h2>
 
         <p>
-          We hope you enjoyed! Keep in mind that
-          in the Ecosphere strenght lies in the
-          network effects. By providing enough
-          value to all players, they will continue to
-          actively participate. The customer gets
-          convienience and relevance. The partner
-          gets reach and conversion. KBC
-          orchestrate and becomes the customers
-          life partner and is top of mind when
-          purchasing financial products. Because
-          real growth starts where everyone wins.
-          Together we increase the "total pie", the
-          joint value of ecosystem
+          We hope you enjoyed! Keep in mind that in the Ecosphere strenght lies
+          in the network effects. By providing enough value to all players, they
+          will continue to actively participate. The customer gets convienience
+          and relevance. The partner gets reach and conversion. KBC orchestrate
+          and becomes the customers life partner and is top of mind when
+          purchasing financial products. Because real growth starts where
+          everyone wins. Together we increase the "total pie", the joint value
+          of ecosystem
         </p>
 
         <img src="./image.png" />
 
         <h3 className="subtitle-text">Claim your prize!</h3>
         <p>
-        Choose wisely! Pick one of the great
-        prizes at our physical stand! You can find
-        us near the auditorium! Please hold your 
-        phone ready to show that you scanned
-        all QR codes.
+          Choose wisely! Pick one of the great prizes at our physical stand! You
+          can find us near the auditorium! Please hold your phone ready to show
+          that you scanned all QR codes.
         </p>
 
         <div className="centering-div">
-                <QRCodeSVG
-                value={qrValue}
-                size={128}
-                level="H"
-                marginSize={4}
-                title="winning QR code"
-                fgColor="#080808ff"
-                />
+          <QRCodeSVG
+            value={qrValue}
+            size={128}
+            level="H"
+            marginSize={4}
+            title="winning QR code"
+            fgColor="#080808ff"
+          />
         </div>
-
       </div>
     </div>
   );
