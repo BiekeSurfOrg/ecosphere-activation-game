@@ -60,7 +60,9 @@ const api = {
   },
   async getUserProgress(userUuid) {
     try {
-      const response = await fetch(`${API_BASE_URL}/user/${userUuid}/progress`);
+      const response = await fetch(`${API_BASE_URL}/user/${userUuid}/progress`, {
+        method: "POST"
+      });
       return await response.json();
     } catch (error) {
       console.error("API Error:", error);
@@ -69,14 +71,10 @@ const api = {
   },
   async claimReward(userUuid, choice) {
     try {
-      const response = await fetch(`${API_BASE_URL}/reward`, {
+      const response = await fetch(`${API_BASE_URL}/check/reward?userUuid=${userUuid}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userUuid,
-          rewardType: choice,
-          timestamp: new Date().toISOString(),
-        }),
+        body: JSON.stringify({ rewardType: choice })
       });
       return await response.json();
     } catch (error) {
