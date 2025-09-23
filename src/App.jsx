@@ -139,7 +139,7 @@ const ScanResultPage = ({
         <QRCodeContainer scannedQRs={scannedLocations || []} />
 
         {/* No idea why there's tailwind here /: */}
-        <h2 className="text-2xl font-bold mb-3">{message}</h2>
+        {/* <h2 className="text-2xl font-bold mb-3">{message}</h2>
         {isGameComplete && (
           <div>
             <button onClick={onContinue} className="button-claim-prize">
@@ -148,7 +148,7 @@ const ScanResultPage = ({
             </button>
             <br />
           </div>
-        )}
+        )} */}
       </div>
     );
   }
@@ -167,6 +167,16 @@ const ScanResultPage = ({
       <div style={{ height: "fit-content" }}>
         <ThirdScreen />
         <QRCodeContainer scannedQRs={scannedLocations || []} />
+        <h2 className="text-2xl font-bold mb-3">{message}</h2>
+        {isGameComplete && (
+          <div>
+            <button onClick={onContinue} className="button-claim-prize">
+              Claim your prize!
+              <LockOpen />
+            </button>
+            <br />
+          </div>
+        )}
       </div>
     );
   }
