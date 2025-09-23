@@ -18,7 +18,9 @@ const FirstScreen = () => {
           for a day full of Group energy, lots of enthusiasm, inspiration and an
           enlightening view on the future of KBC.
         </p>
-        <h3 className="subtitle-text">Jour journey starts NOW!</h3>
+        <h3 className="subtitle-text">
+          Jour journey starts <span className="light-blue-font">NOW</span>!
+        </h3>
         <p>
           Scan the QR-codes throughout the morning sessions in which Johan
           Thijs, Erik Luts and Karen Van De Woestyne will elaborate on the
