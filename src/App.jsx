@@ -122,15 +122,6 @@ const RewardQRPage = ({ userUuid }) => {
           joint value of ecosystem
         </p>
 
-        {/* <div className="icons-border">
-          <p>The triple win</p>
-          <div className="icon-container">
-            <div className="single-icons-border">icon</div>
-            <div className="single-icons-border">icon</div>
-            <div className="single-icons-border">icon</div>
-          </div>
-        </div> */}
-
         <img src="./image.png" />
 
         <h3 className="subtitle-text">Claim your prize!</h3>
@@ -142,8 +133,7 @@ const RewardQRPage = ({ userUuid }) => {
         all QR codes.
         </p>
 
-        <div className="relative p-4 flex justify-center">
-            <div className="bg-white p-4 rounded-lg shadow-lg inline-block">
+        <div className="centering-div">
                 <QRCodeSVG
                 value={qrValue}
                 size={128}
@@ -152,7 +142,6 @@ const RewardQRPage = ({ userUuid }) => {
                 title="winning QR code"
                 fgColor="#080808ff"
                 />
-            </div>
         </div>
 
       </div>
