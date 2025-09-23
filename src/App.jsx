@@ -176,7 +176,6 @@ const ScanResultPage = ({
               <LockOpen />
             </button>
             <br />
-            <FourthScreen />
           </div>
         )}
       </div>
