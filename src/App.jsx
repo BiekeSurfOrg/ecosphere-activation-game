@@ -26,6 +26,7 @@ import SecondScreen from "./successful-scan-components/second-screen";
 import ThirdScreen from "./successful-scan-components/third-screen";
 import QRCodeContainer from "./QRcodeContainer/QRCodeContainer";
 import DummyScreen from "./successful-scan-components/dummy-screen";
+import FourthScreen from "./successful-scan-components/fourth-screen";
 
 // Utils
 const getUserUUID = () => {
@@ -175,6 +176,7 @@ const ScanResultPage = ({
               <LockOpen />
             </button>
             <br />
+            <FourthScreen />
           </div>
         )}
       </div>
