@@ -29,7 +29,10 @@ const ThirdScreen = () => {
           </div>
         </div> */}
 
-        <img src="./GED Activation -Triple win Partner.svg" />
+        <img
+          src="./GED Activation -Triple win Partner.svg"
+          className="image-styling"
+        />
 
         <h3 className="subtitle-text">The partner:</h3>
         <p>

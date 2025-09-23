@@ -163,3 +163,7 @@ h1, h2, h3, p, span {
 .light-blue-font {
   color: #00AEEF;
 }
+
+.image-styling {
+  margin: 8px 0px;
+}

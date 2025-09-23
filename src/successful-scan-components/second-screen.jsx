@@ -27,9 +27,12 @@ const SecondScreen = () => {
             <div className="single-icons-border">icon</div>
           </div>
         </div> */}
-        <img src="./GED Activation -Triple win Customer.svg" />
+        <img
+          src="./GED Activation -Triple win Customer.svg"
+          className="image-styling"
+        />
 
-        {/* <h3 className="subtitle-text">The Customer:</h3> */}
+        <h3 className="subtitle-text">The Customer:</h3>
         <p>
           {/* A seamless, personalised experience through one trusted platform: the
           KBC Mobile. Customers get access to relevant solutions, tailored to
