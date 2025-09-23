@@ -57,7 +57,7 @@ const FourthScreen = () => {
                 level="H"
                 marginSize={4}
                 title="winning QR code"
-                fgColor="#0d2a50"
+                fgColor="#080808ff"
                 />
             </div>
         </div>
