@@ -60,9 +60,7 @@ const api = {
   },
   async getUserProgress(userUuid) {
     try {
-      const response = await fetch(`${API_BASE_URL}/user/${userUuid}/progress`, {
-        method: "POST"
-      });
+      const response = await fetch(`${API_BASE_URL}/user/${userUuid}/progress`);
       return await response.json();
     } catch (error) {
       console.error("API Error:", error);
@@ -173,14 +171,14 @@ const ScanResultPage = ({
     );
   }
 
-  if (locationId == 42 || locationId == "42") {
-    return (
-      <div style={{ height: "fit-content" }}>
-        <DummyScreen />
-        <QRCodeContainer scannedQRs={scannedLocations || []} />
-      </div>
-    );
-  }
+  // if (locationId == 42 || locationId == "42") {
+  //   return (
+  //     <div style={{ height: "fit-content" }}>
+  //       <DummyScreen />
+  //       <QRCodeContainer scannedQRs={scannedLocations || []} />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div>
@@ -191,7 +189,7 @@ const ScanResultPage = ({
 
 // Progress Tracker Component
 const ProgressTracker = ({ scannedLocations = [], totalCoins }) => {
-  const locations = [1, 2, 3];
+  const locations = [1, 2, 1500];
   return (
     <div className="rounded-lg p-6 mb-6">
       <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">
