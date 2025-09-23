@@ -11,12 +11,15 @@ const ThirdScreen = () => {
     <div className="flex-column">
       <header className="header-image"></header>
       <div className="page-container">
-        <h2 className="title-text">Welcome back!</h2>
+        <h2 className="title-text">You found all QR codes!</h2>
 
         <p>
-          2 QR codes down one to go! With the S.T.E.M The Ecosphere strategy we
-          not only aim to sell more products. We also want to Save Time and Earn
-          Money for the customer!
+          In the Ecosphere, the customer is not the
+           end point, but the starting point. Partners
+            are not suppliers, but co-architects. And
+            KBC? We orchestrate, connect,
+            strengthen and accelerate. Because relative
+            growth starts where everyone wins.
         </p>
 
         {/* <div className="icons-border">
@@ -39,7 +42,7 @@ const ThirdScreen = () => {
           customers with a higher conversion rate.
         </p>
 
-        <p>Scan the other QR codes to win!</p>
+        <p>Congratulation, you found all codes!</p>
       </div>
     </div>
   );
