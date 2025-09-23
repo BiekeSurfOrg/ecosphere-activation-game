@@ -120,7 +120,11 @@ const RewardQRPage = ({ userUuid }) => {
           of ecosystem
         </p>
 
-        <img src="./image.png" />
+        <img
+          src="./image.png"
+          className="custom-shadow-img"
+          alt="claim prize image"
+        />
 
         <h3 className="subtitle-text">Claim your prize!</h3>
         <p>

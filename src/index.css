@@ -182,3 +182,12 @@ h1, h2, h3, p, span {
   width: 100%;
   margin-bottom: 12px;
 }
+
+.custom-shadow-img {
+  box-shadow:
+    0px -4px 8px -4px rgba(0,0,0,0.10),   /* small top shadow */
+    -4px 0px 8px -4px rgba(0,0,0,0.10),   /* small left shadow */
+    4px 0px 8px -4px rgba(0,0,0,0.10),    /* small right shadow */
+    0px 12px 24px -4px rgba(0,0,0,0.18);  /* larger bottom shadow */
+  border-radius: 12px;
+}
