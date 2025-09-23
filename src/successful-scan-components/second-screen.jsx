@@ -29,11 +29,16 @@ const SecondScreen = () => {
         </div> */}
         <img src="./GED Activation -Triple win Customer.svg" />
 
-        <h3 className="subtitle-text">The Customer:</h3>
+        {/* <h3 className="subtitle-text">The Customer:</h3> */}
         <p>
-          A seamless, personalised experience through one trusted platform: the
+          {/* A seamless, personalised experience through one trusted platform: the
           KBC Mobile. Customers get access to relevant solutions, tailored to
-          their intentions and needs, without frustration or interruptions
+          their intentions and needs, without frustration or interruptions */}
+          Customers get access to relevant solutions, tailored to their
+          intentions and needs, without frustration or interruptions. All of
+          this in a seamless, personalised experience across all channels
+          powered by Kate and Kate coin. This helps our customers to Save Time
+          and Earn Money.
         </p>
 
         <p>Scan the other QR codes to win!</p>

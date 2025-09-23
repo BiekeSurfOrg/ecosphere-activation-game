@@ -14,12 +14,10 @@ const ThirdScreen = () => {
         <h2 className="title-text">You found all QR codes!</h2>
 
         <p>
-          In the Ecosphere, the customer is not the
-           end point, but the starting point. Partners
-            are not suppliers, but co-architects. And
-            KBC? We orchestrate, connect,
-            strengthen and accelerate. Because relative
-            growth starts where everyone wins.
+          In the Ecosphere, the customer is not the end point, but the starting
+          point. Partners are not suppliers, but co-architects. And KBC? We
+          orchestrate, connect, strengthen and accelerate. Because relative
+          growth starts where everyone wins.
         </p>
 
         {/* <div className="icons-border">
@@ -37,9 +35,9 @@ const ThirdScreen = () => {
         <p>
           To optimally fulfil the needs of the customer, we count on the
           experise of our partners. In return, they get access to a broad and
-          high-value, broad customer base, supported by KBC&apos;s intent detection
-          algorithms and matchmaking. This means a new source of income via new
-          customers with a higher conversion rate.
+          high-value, broad customer base, supported by KBC&apos;s intent
+          detection algorithms and matchmaking. This means a new source of
+          income via new customers with a higher conversion rate.
         </p>
 
         <p>Congratulation, you found all codes!</p>

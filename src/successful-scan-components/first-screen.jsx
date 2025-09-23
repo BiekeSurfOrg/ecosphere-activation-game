@@ -39,13 +39,18 @@ const FirstScreen = () => {
         </div> */}
         <img src="./GED Activation -Triple win KBC.svg" />
 
-        <h3 className="subtitle-text">KBC:</h3>
+        {/* <h3 className="subtitle-text">KBC:</h3> */}
         <p>
-          The orchestrator of the triple win As an orchestrator, KBC creates
+          {/* The orchestrator of the triple win As an orchestrator, KBC creates
           scalable ecosystems in which the sum of the parts yields more than the
           individual contribu- tions. By seamlessly integrating partners across
           different customer journeys, we can anticipate and fulfill the
-          customer’s needs, leading to increased core product sales
+          customer’s needs, leading to increased core product sales */}
+          As an orchestrator, KBC creates scalable ecosystems in which the
+          sum of the parts yields more than the individual contributions. By
+          seamlessly integrating partners across different customer journeys, we
+          can anticipate and fulfill the customer’s needs, leading to increased
+          core product sales.
         </p>
 
         <p>Scan the other QR codes to win!</p>
