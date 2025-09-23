@@ -364,6 +364,7 @@ const App = () => {
   const [scanResultView, setScanResultView] = useState(null);
   const [showCongratulations, setShowCongratulations] = useState(false);
   const [showRewardQR, setShowRewardQR] = useState(false);
+  const [showFinalScreen, setShowFinalScreen] = useState(false);
 
   // Функциите трябва да бъдат дефинирани преди `return`
   const handleContinueToGame = () => {
@@ -377,8 +378,9 @@ const App = () => {
 
   const handleContinueToPrize = () => {
     setScanResultView(null);
-    setShowCongratulations(true);
-    setShowRewardQR(true);
+    setShowFinalScreen(true);
+    // setShowCongratulations(true);
+    // setShowRewardQR(true);
   };
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -540,6 +542,9 @@ const App = () => {
         </div>
       </div>
     );
+  }
+  if (showFinalScreen) {
+    return <FourthScreen qrValue={userUuid} />;
   }
   if (showRewardQR) {
     return <RewardQRPage userUuid={userUuid} />;
