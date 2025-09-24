@@ -37,11 +37,12 @@ const SecondScreen = () => {
           {/* A seamless, personalised experience through one trusted platform: the
           KBC Mobile. Customers get access to relevant solutions, tailored to
           their intentions and needs, without frustration or interruptions */}
-          Customers get access to relevant solutions, tailored to their
-          intentions and needs, Hassle-free. We unburden the customer by
-          offering a seamless and personalised experience across all channels
-          powered by Kate and Kate coin. This helps our customers to Save Time
-          and Earn Money.
+          Customers get access to relevant solutions, tailored
+          to their intentions and needs, Hassle-free. We unburden 
+          the customer by offering a seamless and personalised
+          experience across all channels powered by Kate and
+          Kate coin. This helps our customers to Save Time and 
+          Earn Money.
         </p>
 
         <p>Scan the other QR codes to win!</p>

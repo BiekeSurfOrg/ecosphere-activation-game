@@ -110,14 +110,23 @@ const RewardQRPage = ({ userUuid }) => {
         <h2 className="title-text">Thanks for participating!</h2>
 
         <p>
-          We hope you enjoyed! Keep in mind that in the Ecosphere strenght lies
-          in the network effects. By providing enough value to all players, they
-          will continue to actively participate. The customer gets convienience
-          and relevance. The partner gets reach and conversion. KBC orchestrate
-          and becomes the customers life partner and is top of mind when
-          purchasing financial products. Because real growth starts where
-          everyone wins. Together we increase the "total pie", the joint value
-          of ecosystem
+          We hope you enjoyed! Keep in mind that:
+          <ul class="custom-bullets">
+            <li>In the Ecosphere strenght lies in the
+                network effects. By providing enough
+                value to all players, they will continue to
+                actively participate. </li>
+            <li>The customer gets
+                convienience and relevance.</li> 
+            <li>The partner
+                gets reach and conversion.</li> 
+            <li>KBC orchestrate and becomes the customers life
+                partner and is top of mind when
+                purchasing financial products.</li> 
+          </ul>
+          Because real growth starts where everyone wins.
+          Together we increase the "total pie", the combine
+          value of ecosystems.
         </p>
 
         <img
@@ -126,11 +135,12 @@ const RewardQRPage = ({ userUuid }) => {
           alt="claim prize image"
         />
 
-        <h3 className="subtitle-text">Claim your prize!</h3>
+        <h3 className="title-text">Claim your prize!</h3>
         <p>
-          Choose wisely! Pick one of the great prizes at our physical stand! You
-          can find us near the auditorium! Please hold your phone ready to show
-          that you scanned all QR codes.
+        Choose wisely! Pick one of the great prizes at our physical
+        stand! You can find us near the auditorium! Please hold
+        your phone ready to show that you have scanned all QR 
+        codes.
         </p>
 
         <div className="centering-div">

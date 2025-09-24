@@ -67,11 +67,13 @@ h1, h2, h3, p, span {
 
 .title-text {
   margin-top:12px;
-  font-weight: 600;
+  font-weight: bold;
+  font-size: 21px
 }
 .subtitle-text {
-  margin-top:12px;
-  font-weight: 500;
+  margin-top: 12px; 
+  font-weight: bold;
+  font-size: 16px
 }
 
 .icons-border {
