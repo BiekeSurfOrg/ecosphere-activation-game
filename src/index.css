@@ -61,10 +61,16 @@ h1, h2, h3, p, span {
   margin-right: 12px;
 }
 
-.page-container p, h2, h3 {
+.page-container h2, h3 {
   margin: 0;
   padding: 0;
 }
+
+.page-container p{
+  text-align: justify;
+  line-height: 1.4;
+}
+
 
 .title-text {
   margin-top:12px;
