@@ -43,10 +43,11 @@ h1, h2, h3, p, span {
 
 .header-image {
   background-image: url('./assets/GED Activation Header.svg');
-  background-size: cover; 
+  background-size: contain; 
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center top;
   height: 250px;
+  width: 100%;
 }
 
 .page-container {
