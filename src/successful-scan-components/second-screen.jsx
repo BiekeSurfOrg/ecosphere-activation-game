@@ -14,7 +14,7 @@ const SecondScreen = () => {
         <h2 className="title-text">Welcome back!</h2>
 
         <p>
-          2 QR codes down one to go! With the S.T.E.M The Ecosphere strategy we
+          Two QR codes down one to go! With the S.T.E.M. The Ecosphere strategy we
           not only aim to sell more products. We also want to Save Time and Earn
           Money for the customer!
         </p>
@@ -38,8 +38,8 @@ const SecondScreen = () => {
           KBC Mobile. Customers get access to relevant solutions, tailored to
           their intentions and needs, without frustration or interruptions */}
           Customers get access to relevant solutions, tailored to their
-          intentions and needs, without frustration or interruptions. All of
-          this in a seamless, personalised experience across all channels
+          intentions and needs, Hassle-free. We unburden the customer by
+          offering a seamless and personalised experience across all channels
           powered by Kate and Kate coin. This helps our customers to Save Time
           and Earn Money.
         </p>

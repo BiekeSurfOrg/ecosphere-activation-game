@@ -15,9 +15,9 @@ const ThirdScreen = () => {
 
         <p>
           In the Ecosphere, the customer is not the end point, but the starting
-          point. Partners are not suppliers, but co-architects. And KBC? We
-          orchestrate, connect, strengthen and accelerate. Because relative
-          growth starts where everyone wins.
+          point. Partners are not suppliers, but co-creators. And KBC? We
+          orchestrate, connect and accelerate. Because real growth starts
+          where everyone wins.
         </p>
 
         {/* <div className="icons-border">
@@ -34,13 +34,15 @@ const ThirdScreen = () => {
           className="image-styling"
         />
 
-        <h3 className="subtitle-text">The partner:</h3>
+        <h3 className="subtitle-text">Our partners:</h3>
         <p>
-          To optimally fulfil the needs of the customer, we count on the
-          experise of our partners. In return, they get access to a broad and
-          high-value, broad customer base, supported by KBC&apos;s intent
-          detection algorithms and matchmaking. This means a new source of
-          income via new customers with a higher conversion rate.
+          To optimally fulfil the needs of the customer, we 
+          combine the experise of our partners. In return, they get 
+          access to a broad and highly valuable customer base, 
+          supported by KBC's intent detection algorithms.
+          For the partner, this means a new source of
+          income by reaching new customers with a higher
+          conversion.
         </p>
 
         <p>Congratulation, you found all codes!</p>
