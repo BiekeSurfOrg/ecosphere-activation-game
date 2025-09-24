@@ -32,7 +32,7 @@ const SecondScreen = () => {
           className="image-styling"
         />
 
-        <h3 className="subtitle-text">The Customer:</h3>
+        <h3 className="subtitle-text">Our Customer</h3>
         <p>
           {/* A seamless, personalised experience through one trusted platform: the
           KBC Mobile. Customers get access to relevant solutions, tailored to
@@ -45,7 +45,7 @@ const SecondScreen = () => {
           Earn Money.
         </p>
 
-        <p>Scan the other QR codes to win!</p>
+        <h3 className="subtitle-text">Scan the other QR codes to win!</h3>
       </div>
     </div>
   );

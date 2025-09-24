@@ -43,7 +43,7 @@ const FirstScreen = () => {
           className="image-styling"
         />
 
-        <h3 className="subtitle-text">KBC:</h3>
+        <h3 className="subtitle-text">KBC</h3>
         <p>
           {/* The orchestrator of the triple win As an orchestrator, KBC creates
           scalable ecosystems in which the sum of the parts yields more than the
@@ -57,7 +57,7 @@ const FirstScreen = () => {
           core product sales.
         </p>
 
-        <p>Scan the other QR codes to win!</p>
+        <h3 className="subtitle-text">Scan the other QR codes to win!</h3>
       </div>
     </div>
   );

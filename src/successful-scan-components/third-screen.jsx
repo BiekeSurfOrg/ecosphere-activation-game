@@ -34,7 +34,7 @@ const ThirdScreen = () => {
           className="image-styling"
         />
 
-        <h3 className="subtitle-text">Our partners:</h3>
+        <h3 className="subtitle-text">Our partners</h3>
         <p>
           To optimally fulfil the needs of the customer, we 
           combine the experise of our partners. In return, they get 
@@ -45,7 +45,7 @@ const ThirdScreen = () => {
           conversion.
         </p>
 
-        <p>Congratulation, you found all codes!</p>
+        <h3 className="subtitle-text">Congratulation, you found all codes!</h3>
       </div>
     </div>
   );
