@@ -149,9 +149,30 @@ h1, h2, h3, p, span {
 
 .QR-image-container p {
   color: #00AEEF;
-  font-weight: 400px;
+  font-weight: 500px;
   font-size:32px;
   padding-bottom:4px;
+  
+  @media screen and (max-width: 400px) {
+    font-size:26px;
+    font-weight: 600;
+  }
+  
+  @media screen and (max-width: 360px) {
+    font-size:20px;
+    font-weight: 600;
+  }
+}
+
+.QR-image-container img {
+  width: 160px;
+  
+  @media screen and (max-width: 420px) {
+    width: 140px;
+  }
+  @media screen and (max-width: 380px) {
+    width: 120px;
+  }
 }
 
 .button-claim-prize {
@@ -199,4 +220,22 @@ h1, h2, h3, p, span {
     4px 0px 8px -4px rgba(0,0,0,0.10),    /* small right shadow */
     0px 12px 24px -4px rgba(0,0,0,0.18);  /* larger bottom shadow */
   border-radius: 12px;
+}
+
+.scan-qr-codes-and-win {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  /* gap: 4px; */
+}
+
+.scan-qr-codes-and-win img {
+  width: 92px;
+  font-weight: 600px;
+}
+.scan-qr-codes-and-win p {
+  font-weight: bold;
+  font-size: 18px;
 }

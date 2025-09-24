@@ -11,6 +11,14 @@ const FirstScreen = () => {
     <div className="flex-column">
       <header className="header-image"></header>
       <div className="page-container">
+        <div className="scan-qr-codes-and-win">
+          <img
+            src={"./GED Activation -QR without Checkmark.svg"}
+            alt={`QR image`}
+          />
+          <p>Scan QR codes and win!</p>
+        </div>
+
         <h2 className="title-text">Hi Team Blue Colleague!</h2>
 
         <p>
@@ -25,9 +33,8 @@ const FirstScreen = () => {
           Scan the QR-codes throughout the morning sessions during which Johan
           Thijs, Erik Luts and Karen Van De Woestyne will elaborate on the
           Ecosphere strategy to activate to participate and win grand prizes!
-          Enjoy your refreshing breakfast. 
-          At 9 o’clock we start with our Ecosphere Journey
-          which is all about the triple win.
+          Enjoy your refreshing breakfast. At 9 o’clock we start with our
+          Ecosphere Journey which is all about the triple win.
         </p>
 
         {/* <div className="icons-border">

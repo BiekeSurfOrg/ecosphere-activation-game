@@ -15,7 +15,6 @@ const QRCodeContainer = ({ scannedQRs }) => {
               : "./GED Activation -QR without Checkmark.svg"
           }
           alt={`QR image`}
-          style={{ width: "160px" }}
         />
         <p>KBC</p>
       </div>
@@ -28,7 +27,6 @@ const QRCodeContainer = ({ scannedQRs }) => {
               : "./GED Activation -QR without Checkmark.svg"
           }
           alt={`QR image`}
-          style={{ width: "160px" }}
         />
         <p>The Customer</p>
       </div>
@@ -41,7 +39,6 @@ const QRCodeContainer = ({ scannedQRs }) => {
               : "./GED Activation -QR without Checkmark.svg"
           }
           alt={`QR image`}
-          style={{ width: "160px" }}
         />
         <p>The partner</p>
       </div>
